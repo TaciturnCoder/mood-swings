@@ -1,0 +1,190 @@
+@use './fx';
+
+/// # Mood Swings API
+/// @group api
+
+// runtime
+// -----------
+/// Returns the value of a css custom property color.
+/// @access public
+/// @group api
+/// @param {string} $name - Name of the color.
+/// @param {string} $prop [''] - Sub-property of the color.
+/// @return {*} Value of the custom property.
+@function runtime($name, $prop: null) {
+    @if $prop {
+        @return fx.runtime(#{$name}-#{$prop});
+    }
+
+    @else {
+        @return fx.runtime($name);
+    }
+}
+
+// inject-color
+// -----------
+/// Injects a color into the css scope.
+/// @access private
+/// @group api
+/// @param {string} $name - Name of the color.
+@mixin -inject-color($name) {
+    @include fx.inject((#{$name}: hsl(runtime($name, h),
+                calc(runtime($name, s) * 1%),
+                calc(runtime($name, l) * 1%))));
+}
+
+// inject-hsl
+// -----------
+/// Injects a hsl properties of color into the css scope.
+/// @access private
+/// @group api
+/// @param {string} $name - Name of the color.
+/// @param {number} $h - Hue.
+/// @param {number} $s - Saturation.
+/// @param {number} $l - Lightness.
+@mixin -inject-hsl($name, $h, $s, $l) {
+    @include fx.inject((#{$name}-h: $h,
+            #{$name}-s: $s,
+            #{$name}-l: $l ));
+
+    @include -inject-color($name);
+}
+
+// inject-on
+// -----------
+/// Injects an on-color into the css scope.
+/// @access private
+/// @group api
+/// @param {string} $name - Name of the color.
+/// @param {number} $shift [50] - Shift of the lightness.
+@mixin -inject-on($name, $shift: 50) {
+    @include fx.inject((on-#{$name}-h: runtime($name, h),
+            on-#{$name}-s: runtime($name, s),
+            on-#{$name}--sign: calc(-2 * fx.hardlimit(#{$name}-l, 100 - $shift) + 1),
+            on-#{$name}-l: calc(runtime($name, l) + $shift * fx.runtime(on-#{$name}--sign))));
+
+    @include -inject-color(on-#{$name});
+}
+
+// inject-container
+// -----------
+/// Injects a color-container into the css scope.
+/// @access private
+/// @group api
+/// @param {string} $name - Name of the color.
+/// @param {number} $shift [30] - Shift of the lightness.
+@mixin -inject-container($name, $shift: 30) {
+    @include fx.inject((#{$name}-container-h: runtime($name, h),
+            #{$name}-container-s: runtime($name, s),
+            #{$name}-container--sign: calc(-2 * fx.hardlimit(#{$name}-l, $shift) + 1),
+            #{$name}-container-l: calc(runtime($name, l) + $shift * fx.runtime(#{$name}-container--sign))));
+
+    @include -inject-color(#{$name}-container);
+}
+
+// inject
+// -----------
+/// Injects a color, on-color, and color-container into the css scope.
+/// @access private
+/// @group api
+/// @param {string} $name - Name of the color.
+/// @param {number} $h - Hue.
+/// @param {number} $s - Saturation.
+/// @param {number} $l - Lightness.
+@mixin -inject($name, $h, $s, $l) {
+    @include -inject-hsl($name, $h, $s, $l);
+    @include -inject-on($name);
+    @include -inject-container($name);
+    @include -inject-on(#{$name}-container);
+}
+
+// mood-flag
+// -----------
+/// Injects a mood-flag into the css scope.
+/// @access private
+/// @group api
+@mixin -mood-flag {
+    @include fx.inject((mood--flag: clamp(0, fx.hardlimit(mood-s, 0) + fx.hardlimit(mood-l, 0), 1)));
+}
+
+// blend-mood
+// -----------
+/// Blends a color with the mood color.
+/// @access private
+/// @group api
+/// @param {string} $name - Name of the color.
+/// @param {string} $prop - Sub-property of the color.
+/// @param {number} $ratio [0.3] - Ratio of the mood color.
+/// @return {*} Value of the custom property.
+@function -blend-mood($name, $prop, $ratio: 0.3) {
+    @return fx.blend(fx.runtime(mood--flag),
+        fx.blend($ratio,
+            runtime($name, $prop),
+            runtime(mood, $prop)),
+        runtime($name, $prop));
+}
+
+// new
+// -----------
+/// Creates a new color.
+/// @access public
+/// @group api
+/// @param {string} $name - Name of the color.
+/// @param {color} $color - Color.
+@mixin new($name, $color) {
+    @include -inject($name,
+        fx.abstract(hue($color)),
+        fx.abstract(saturation($color)),
+        fx.abstract(lightness($color)));
+}
+
+// inject
+// -----------
+/// Injects colors into the css scope.
+/// @access public
+/// @group api
+/// @param {color} $accent [hsl(270, 60%, 42%)] - Accent color.
+/// @param {color} $accent-variant [hsl(60, 60%, 42%)] - Accent variant color.
+/// @param {color} $mood [hsl(0, 0%, 0%)] - Mood color.
+/// @param {color} $warning [hsl(0, 60%, 42%)] - Warning color.
+/// @param {color} $warning-variant [hsl(60, 60%, 42%)] - Warning variant color.
+/// @param {color} $success [hsl(120, 60%, 42%)] - Success color.
+@mixin inject($accent: hsl(270, 60%, 42%),
+    $accent-variant: hsl(60, 60%, 42%),
+    $mood: hsl(0, 0%, 0%),
+    $warning: hsl(0, 60%, 42%),
+    $warning-variant: hsl(60, 60%, 42%),
+    $success: hsl(120, 60%, 42%)) {
+    @include -inject-hsl(accent,
+        fx.abstract(hue($accent)),
+        fx.abstract(saturation($accent)),
+        fx.abstract(lightness($accent)));
+    @include -inject-hsl(accent-variant,
+        fx.abstract(hue($accent-variant)),
+        fx.abstract(saturation($accent-variant)),
+        fx.abstract(lightness($accent-variant)));
+    @include -inject-hsl(mood,
+        fx.abstract(hue($mood)),
+        fx.abstract(saturation($mood)),
+        fx.abstract(lightness($mood)));
+    @include -mood-flag;
+
+    @include new(warning, $warning);
+    @include new(warning-variant, $warning-variant);
+    @include new(success, $success);
+
+    @include -inject(primary,
+        -blend-mood(accent, h),
+        -blend-mood(accent, s),
+        -blend-mood(accent, l));
+
+    @include -inject(secondary,
+        -blend-mood(accent-variant, h, 0.6),
+        runtime(accent-variant, s),
+        runtime(accent-variant, l));
+
+    @include -inject(surface,
+        -blend-mood(accent, h, 0.1),
+        10,
+        -blend-mood(accent, l, 0.1));
+}
