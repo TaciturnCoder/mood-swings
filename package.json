@@ -1,14 +1,14 @@
 {
     "name": "@dwijbavisi/mood-swings",
-    "version": "0.2.0",
-    "description": "Mood based colors",
+    "version": "0.3.1",
+    "description": "🎨 Color scheme that adapts to your mood",
     "main": "_index.scss",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "npm run build:docs && npm run build:docs-api && npm run build:demo",
-        "build:docs": "npx sassdoc \"**/*.scss\" --dest spec/design",
-        "build:docs-api": "npx sassdoc \"api/**/*.scss\" --dest docs/api",
-        "build:demo": "npx sass --no-source-map spec/test/demo.scss:spec/test/demo.css",
+        "build:demo": "npx sass --no-source-map spec/demo",
+        "docs": "npm run docs:api && npm run docs:design",
+        "docs:api": "npx sassdoc \"api/**/*.scss\" --dest docs/api",
+        "docs:design": "npx sassdoc \"src/**/*.scss\" --dest spec/design",
         "lint:scss": "npx stylelint \"**/*.scss\""
     },
     "repository": {
@@ -21,8 +21,10 @@
         "url": "https://github.com/TaciturnCoder/mood-swings/issues"
     },
     "homepage": "https://github.com/TaciturnCoder/mood-swings#readme",
+    "dependencies": {
+        "sass": "^1.58.3"
+    },
     "devDependencies": {
-        "sass": "^1.58.3",
         "sassdoc": "^2.7.4",
         "stylelint": "^15.2.0",
         "stylelint-config-standard-scss": "^7.0.1"

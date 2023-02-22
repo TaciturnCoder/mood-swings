@@ -1,4 +1,7 @@
-.vscode/settings.json
+spec/demo/index.css
+
+.vscode/**/*
+!.vscode/settings.json
 
 node_modules/
 package-lock.json
