@@ -4,24 +4,24 @@
 # Installation
 
 ```bash
-    npm i @dwijbavisi/mood-swings
+npm i @dwijbavisi/mood-swings
 ```
 
 # Usage
 
 ```scss
-    @use '@dwijbavisi/mood-swings' as mood-swings;
+@use '@dwijbavisi/mood-swings' as mood-swings;
 
-    :root {
-        @include mood-swings.container;
+:root {
+    @include mood-swings.container;
 
-        // Generate new color
-        @include mood-swings.new(notification, #502343);
-    }
+    // Generate new color
+    @include mood-swings.new(notification, #502343);
+}
 ```
 
-See [spec/design][./spec/design/]
+See [spec/design](./spec/design)
 
 # API Documentation
 
-See [docs/api][./docs/api]
+See [docs/api](./docs/api)
