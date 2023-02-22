@@ -1,0 +1,94 @@
+@use '../src/utils';
+@use './var';
+
+////
+/// @access public
+/// @group API
+////
+
+/// Injects a color into the css scope.
+/// @param {string} $name
+///     Name of the color.
+/// @requires {mixin} utils.inject
+/// @requires {function} runtime
+@mixin inject-color($name) {
+    @include utils.inject((#{$name}: hsl(var.runtime($name, h),
+                calc(var.runtime($name, s) * 1%),
+                calc(var.runtime($name, l) * 1%))));
+}
+
+/// Injects a hsl properties of color into the css scope.
+/// @param {string} $name
+///     Name of the color.
+/// @param {number} $h
+///     Hue.
+/// @param {number} $s
+///     Saturation.
+/// @param {number} $l
+///     Lightness.
+/// @requires {mixin} utils.inject
+/// @requires {mixin} inject-color
+@mixin inject-hsl($name, $h, $s, $l) {
+    @include utils.inject((#{$name}-h: $h,
+            #{$name}-s: $s,
+            #{$name}-l: $l ));
+
+    @include inject-color($name);
+}
+
+/// Injects an on-color into the css scope.
+/// @param {string} $name
+///     Name of the color.
+/// @param {number} $shift [50]
+///     Shift of the lightness.
+/// @requires {mixin} utils.inject
+/// @requires {function} utils.hardlimit
+/// @requires {function} utils.runtime
+/// @requires {function} runtime
+/// @requires {mixin} inject-color
+@mixin inject-on($name, $shift: 50) {
+    @include utils.inject((on-#{$name}-h: var.runtime($name, h),
+            on-#{$name}-s: var.runtime($name, s),
+            on-#{$name}--sign: calc(-2 * utils.hardlimit(#{$name}-l, 100 - $shift) + 1),
+            on-#{$name}-l: calc(var.runtime($name, l) + $shift * utils.runtime(on-#{$name}--sign))));
+
+    @include inject-color(on-#{$name});
+}
+
+/// Injects a color-container into the css scope.
+/// @param {string} $name
+///     Name of the color.
+/// @param {number} $shift [30]
+///     Shift of the lightness.
+/// @requires {mixin} utils.inject
+/// @requires {function} utils.hardlimit
+/// @requires {function} utils.runtime
+/// @requires {function} runtime
+/// @requires {mixin} inject-color
+@mixin inject-container($name, $shift: 30) {
+    @include utils.inject((#{$name}-container-h: var.runtime($name, h),
+            #{$name}-container-s: var.runtime($name, s),
+            #{$name}-container--sign: calc(-2 * utils.hardlimit(#{$name}-l, $shift) + 1),
+            #{$name}-container-l: calc(var.runtime($name, l) + $shift * utils.runtime(#{$name}-container--sign))));
+
+    @include inject-color(#{$name}-container);
+}
+
+/// Injects a color, on-color, and color-container into the css scope.
+/// @param {string} $name
+///     Name of the color.
+/// @param {number} $h
+///     Hue.
+/// @param {number} $s
+///     Saturation.
+/// @param {number} $l
+///     Lightness.
+/// @requires {mixin} inject-hsl
+/// @requires {mixin} inject-on
+/// @requires {mixin} inject-container
+@mixin inject($name, $h, $s, $l) {
+    @include inject-hsl($name, $h, $s, $l);
+    @include inject-on($name);
+    @include inject-container($name);
+    @include inject-on(#{$name}-container);
+}
