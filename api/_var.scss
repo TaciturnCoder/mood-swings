@@ -2,20 +2,27 @@
 
 ////
 /// @access public
-/// @group API
+/// @group api
 ////
 
-/// Returns the value of a css custom property color.
-/// @param {string} $name
-///     Name of the color.
-/// @param {string} $prop ['']
-///     Sub-property of the color.
+/// Returns the notation for a CSS custom property color
+/// @param {string} name
+///     Name of the color
+/// @param {string} prop [null]
+///     Sub-property of the color
 /// @requires {function} utils.runtime
+///     <../../spec/design/#utils-function-runtime>
 /// @return {*}
-///     Value of the custom property.
+///     Notation for the CSS custom property
 @function runtime($name, $prop: null) {
     @if $prop {
-        @return utils.runtime(#{$name}-#{$prop});
+        @if $prop =='h' {
+            @return utils.runtime(#{$name}-#{$prop}, $fallback: 0);
+        }
+
+        @else {
+            @return clamp(0, utils.runtime(#{$name}-#{$prop}, $fallback: 0), 100);
+        }
     }
 
     @else {

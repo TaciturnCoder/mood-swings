@@ -3,22 +3,30 @@
 /// @group utils
 ////
 
-/// Returns the value of a css custom property.
-/// @param {string} $prop
+/// Point to a CSS custom property
+/// @param {string} prop
 ///     CSS custom property to retrive
-/// @param {string} $prefix ['mood-swings']
-///     Prefix to apply.
+/// @param {string} prefix ['mood-swings']
+///     Prefix to apply
+/// @param {*} fallback [null]
+///    Fallback value to return if property is not defined
 /// @return {*}
-///     Value of the custom property.
-@function runtime($prop, $prefix: 'mood-swings') {
-    @return var(--#{$prefix}-#{$prop});
+///     Pointer to the CSS custom property
+@function runtime($prop, $prefix: 'mood-swings', $fallback: null) {
+    @if $fallback {
+        @return var(--#{$prefix}-#{$prop}, $fallback);
+    }
+
+    @else {
+        @return var(--#{$prefix}-#{$prop});
+    }
 }
 
-/// Injects a map of variables into the css scope.
-/// @param {map} $vars
-///     Map of variables to inject.
-/// @param {string} $prefix ['mood-swings']
-///     Prefix to apply.
+/// Inject a map of CSS custom properties into the CSS scope
+/// @param {map} vars
+///     Key-value pairs to inject
+/// @param {string} prefix ['mood-swings']
+///     Prefix to apply
 @mixin inject($vars, $prefix: 'mood-swings') {
 
     @each $prop,

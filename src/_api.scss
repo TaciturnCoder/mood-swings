@@ -3,18 +3,17 @@
 
 ////
 /// @access public
+/// @group wrapper
 ////
 
-/// Creates a new color.
-/// @param {string} $name
-///     Name of the color.
-/// @param {color} $color
-///     Color.
+/// Creates a new color
+/// @param {string} name
+///     Name of the color
+/// @param {color} color
+///     Color
 /// @requires {mixin} api.inject
-/// @requires {function} utils.abstract
-/// @requires {function} hue
-/// @requires {function} saturation
-/// @requires {function} lightness
+///     <../../docs/api/#api-mixin-inject>
+/// @requires {function} abstract
 @mixin new($name, $color) {
     @include api.inject($name,
         utils.abstract(hue($color)),
@@ -22,20 +21,32 @@
         utils.abstract(lightness($color)));
 }
 
-/// Injects colors into the css scope.
-/// @param {color} $accent [hsl(270, 60%, 42%)]
-///     Accent color.
-/// @param {color} $accent-variant [hsl(60, 60%, 42%)]
-///     Accent variant color.
-/// @param {color} $mood [hsl(0, 0%, 0%)]
-///     Mood color.
-/// @param {color} $warning [hsl(0, 60%, 42%)]
-///     Warning color.
-/// @param {color} $warning-variant [hsl(60, 60%, 42%)]
-///     Warning variant color.
-/// @param {color} $success [hsl(120, 60%, 42%)]
-///     Success color.
-@mixin inject($accent: hsl(270, 60%, 42%),
+/// Injects colors into the css scope
+/// @param {color} accent [hsl(270, 60%, 42%)]
+///     Accent color
+/// @param {color} accent-variant [hsl(60, 60%, 42%)]
+///     Accent variant color
+/// @param {color} mood [hsl(0, 0%, 0%)]
+///     Mood color
+/// @param {color} warning [hsl(0, 60%, 42%)]
+///     Warning color
+/// @param {color} warning-variant [hsl(60, 60%, 42%)]
+///     Warning variant color
+/// @param {color} success [hsl(120, 60%, 42%)]
+///     Success color
+/// @requires {mixin} api.inject-hsl
+///     <../../docs/api/#api-mixin-inject-hsl>
+/// @requires {mixin} api.inject
+///     <../../docs/api/#api-mixin-inject>
+/// @requires {mixin} api.mood-flag
+///     <../../docs/api/#api-mixin-mood-flag>
+/// @requires {function} api.blend-mood
+///     <../../docs/api/#api-function-blend-mood>
+/// @requires {function} api.runtime
+///     <../../docs/api/#api-function-runtime>
+/// @requires {function} abstract
+/// @requires {mixin} new
+@mixin container($accent: hsl(270, 60%, 42%),
     $accent-variant: hsl(60, 60%, 42%),
     $mood: hsl(0, 0%, 0%),
     $warning: hsl(0, 60%, 42%),
@@ -60,7 +71,7 @@
     @include new(success, $success);
 
     @include api.inject(primary,
-        api.blend-mood(accent, h),
+        api.blend-mood(accent, h, 0.3),
         api.blend-mood(accent, s),
         api.blend-mood(accent, l));
 
@@ -70,7 +81,7 @@
         api.runtime(accent-variant, l));
 
     @include api.inject(surface,
-        api.blend-mood(accent, h, 0.1),
+        api.blend-mood(accent, h),
         10,
-        api.blend-mood(accent, l, 0.1));
+        api.runtime(accent, l));
 }
