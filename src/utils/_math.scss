@@ -1,0 +1,44 @@
+@use 'sass:math';
+@use './var';
+
+////
+/// @access public
+/// @group utils
+////
+
+/// Converts concrete values to abstract (unitless) values.
+/// @param {*} $concrete
+///     Concrete value from which to derive unitless value.
+/// @requires {function} math.div
+/// @return {*}
+///     Abstract (unitless) value.
+@function abstract($concrete) {
+    @return math.div($concrete, ($concrete * 0 + 1));
+}
+
+/// Compares a property to a limit and returns 1 or 0.
+/// If the property is greater than the limit, 1 is returned.
+/// If the property is less than the limit, 0 is returned.
+/// @param {string} $prop
+///     Property to compare.
+/// @param {string | number} $limit
+///     Limit to compare.
+/// @requires {function} runtime
+/// @return {number}
+///     CSS clamp notation
+@function hardlimit($prop, $limit) {
+    @return clamp(0, #{var.runtime($prop)} - #{$limit}, 1);
+}
+
+/// Blends two values based on a flag.
+/// @param {number} $flag
+///     Flag to blend.
+/// @param {number} $true
+///     Value to return if flag is 1.
+/// @param {number} $false
+///     Value to return if flag is 0.
+/// @returns {string}
+///     CSS notation for blended value.
+@function blend($flag, $true, $false) {
+    @return calc(#{$flag} * #{$true} + (1 - #{$flag}) * #{$false});
+}

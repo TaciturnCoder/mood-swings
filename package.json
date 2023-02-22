@@ -1,13 +1,14 @@
 {
     "name": "@dwijbavisi/mood-swings",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Mood based colors",
     "main": "_index.scss",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "npm run build:design && npm run build:test",
-        "build:design": "npx sassdoc \"**/*.scss\" --dest spec/design",
-        "build:test": "npx sass --no-source-map spec/test/build.scss:spec/test/build.css",
+        "build": "npm run build:docs && npm run build:docs-api && npm run build:demo",
+        "build:docs": "npx sassdoc \"**/*.scss\" --dest spec/design",
+        "build:docs-api": "npx sassdoc \"api/**/*.scss\" --dest docs/api",
+        "build:demo": "npx sass --no-source-map spec/test/demo.scss:spec/test/demo.css",
         "lint:scss": "npx stylelint \"**/*.scss\""
     },
     "repository": {

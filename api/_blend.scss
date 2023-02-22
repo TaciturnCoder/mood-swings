@@ -1,0 +1,34 @@
+@use '../src/utils';
+@use './var';
+
+////
+/// @access public
+/// @group API
+////
+
+/// Injects a mood-flag into the css scope.
+/// @requires {mixin} utils.inject
+/// @requires {function} utils.hardlimit
+@mixin mood-flag {
+    @include utils.inject((mood--flag: clamp(0, utils.hardlimit(mood-s, 0) + utils.hardlimit(mood-l, 0), 1)));
+}
+
+/// Blends a color with the mood color.
+/// @param {string} $name
+///     Name of the color.
+/// @param {string} $prop
+///     Sub-property of the color.
+/// @param {number} $ratio [0.3]
+///     Ratio of the mood color.
+/// @return {*}
+///     Value of the custom property.
+/// @requires {function} utils.blend
+/// @requires {function} utils.runtime
+/// @requires {function} runtime
+@function blend-mood($name, $prop, $ratio: 0.3) {
+    @return utils.blend(utils.runtime(mood--flag),
+        utils.blend($ratio,
+            var.runtime($name, $prop),
+            var.runtime(mood, $prop)),
+        var.runtime($name, $prop));
+}

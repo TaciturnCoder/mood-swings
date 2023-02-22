@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mood-swings Demo</title>
+
+    <link rel="stylesheet" href="./demo.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 3em;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1em;
+
+            background-color: var(--mood-swings-surface);
+        }
+
+        div {
+            aspect-ratio: 1;
+            border-radius: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0.3em solid var(--mood-swings-surface-container);
+        }
+
+        .mood {
+            aspect-ratio: unset;
+            grid-row: span 4;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div style="background-color: var(--mood-swings-accent); color: var(--mood-swings-on-primary);">Accent</div>
+    <div style="background-color: var(--mood-swings-primary); color: var(--mood-swings-on-primary);">Primary</div>
+    <div style="background-color: var(--mood-swings-on-primary); color: var(--mood-swings-primary);">On Primary</div>
+    <div
+        style="background-color: var(--mood-swings-primary-container); color: var(--mood-swings-on-primary-container);">
+        Primary Container</div>
+    <div
+        style="background-color: var(--mood-swings-on-primary-container); color: var(--mood-swings-primary-container);">
+        On Primary Container</div>
+
+    <div style="background-color: var(--mood-swings-accent-variant); color: var(--mood-swings-on-secondary);">Accent
+        Variant</div>
+    <div style="background-color: var(--mood-swings-secondary); color: var(--mood-swings-on-secondary);">Secondary</div>
+    <div style="background-color: var(--mood-swings-on-secondary); color: var(--mood-swings-secondary);">On Secondary
+    </div>
+    <div
+        style="background-color: var(--mood-swings-secondary-container); color: var(--mood-swings-on-secondary-container);">
+        Secondary Container</div>
+    <div
+        style="background-color: var(--mood-swings-on-secondary-container); color: var(--mood-swings-secondary-container);">
+        On Secondary Container</div>
+
+    <div class="mood" style="background-color: var(--mood-swings-mood); color: var(--mood-swings-on-surface);">Mood
+    </div>
+    <div style="background-color: var(--mood-swings-surface); color: var(--mood-swings-on-surface);">Surface</div>
+    <div style="background-color: var(--mood-swings-on-surface); color: var(--mood-swings-surface);">On Surface</div>
+    <div
+        style="background-color: var(--mood-swings-surface-container); color: var(--mood-swings-on-surface-container);">
+        Surface Container</div>
+    <div
+        style="background-color: var(--mood-swings-on-surface-container); color: var(--mood-swings-surface-container);">
+        On Surface Container</div>
+
+    <div style="background-color: var(--mood-swings-warning); color: var(--mood-swings-on-warning);">Warning</div>
+    <div style="background-color: var(--mood-swings-on-warning); color: var(--mood-swings-warning);">On Warning</div>
+    <div
+        style="background-color: var(--mood-swings-warning-container); color: var(--mood-swings-on-warning-container);">
+        Warning Container</div>
+    <div
+        style="background-color: var(--mood-swings-on-warning-container); color: var(--mood-swings-warning-container);">
+        On Warning Container</div>
+
+    <div style="background-color: var(--mood-swings-warning-variant); color: var(--mood-swings-on-warning-variant);">
+        Warning Variant</div>
+    <div style="background-color: var(--mood-swings-on-warning-variant); color: var(--mood-swings-warning-variant);">On
+        Warning Variant</div>
+    <div
+        style="background-color: var(--mood-swings-warning-variant-container); color: var(--mood-swings-on-warning-variant-container);">
+        Warning Variant Container</div>
+    <div
+        style="background-color: var(--mood-swings-on-warning-variant-container); color: var(--mood-swings-warning-variant-container);">
+        On Warning Variant Container</div>
+
+    <div style="background-color: var(--mood-swings-success); color: var(--mood-swings-on-success);">Success</div>
+    <div style="background-color: var(--mood-swings-on-success); color: var(--mood-swings-success);">On Success</div>
+    <div
+        style="background-color: var(--mood-swings-success-container); color: var(--mood-swings-on-success-container);">
+        Success Container</div>
+    <div
+        style="background-color: var(--mood-swings-on-success-container); color: var(--mood-swings-success-container);">
+        On Success Container</div>
+
+</body>
+
+</html>
