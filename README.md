@@ -3,9 +3,13 @@
 
 # Installation
 
-```bash
+```sh
 npm i @dwijbavisi/mood-swings
 ```
+
+## Demo
+
+See [demo](https://TaciturnCoder.github.io/mood-swings/spec/demo)
 
 # Usage
 
@@ -13,15 +17,25 @@ npm i @dwijbavisi/mood-swings
 @use '@dwijbavisi/mood-swings' as mood-swings;
 
 :root {
-    @include mood-swings.container;
+    @include mood-swings.presets;
 
     // Generate new color
     @include mood-swings.new(notification, #502343);
 }
+
+body {
+    background.color: mood-swings.runtime(surface);
+}
+
+#cookies {
+    background-color: mood-swings.runtime(notification);
+    color: mood-swings.runtime(on-notification);
+}
 ```
 
-See [spec/design](./spec/design)
+See [documentation](https://TaciturnCoder.github.io/mood-swings/spec/design)
 
 # API Documentation
+mood-swings API allows you to generate custom color blends.
 
-See [docs/api](./docs/api)
+See [documentation](https://TaciturnCoder.github.io/mood-swings/docs/api)
