@@ -7,6 +7,10 @@
 npm i @dwijbavisi/mood-swings
 ```
 
+## Demo
+
+See [demo](https://TaciturnCoder.github.io/mood-swings/spec/demo)
+
 # Usage
 
 ```scss
