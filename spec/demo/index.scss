@@ -1,5 +1,5 @@
 @use '../../index' as mood-swings;
 
 :root {
-    @include mood-swings.container;
+    @include mood-swings.presets;
 }

@@ -21,7 +21,16 @@
         utils.abstract(lightness($color)));
 }
 
-/// Injects colors into the css scope
+/// Returns a runtime color
+/// @param {string} name
+///     Name of the color
+/// @requires {function} api.runtime
+///     <../../docs/api/#api-function-runtime>
+@function runtime($name) {
+    @return api.runtime($name);
+}
+
+/// Injects preset colors into the css scope
 /// @param {color} accent [hsl(270, 60%, 42%)]
 ///     Accent color
 /// @param {color} accent-variant [hsl(60, 60%, 42%)]
@@ -46,7 +55,7 @@
 ///     <../../docs/api/#api-function-runtime>
 /// @requires {function} abstract
 /// @requires {mixin} new
-@mixin container($accent: hsl(270, 60%, 42%),
+@mixin presets($accent: hsl(270, 60%, 42%),
     $accent-variant: hsl(60, 60%, 42%),
     $mood: hsl(0, 0%, 0%),
     $warning: hsl(0, 60%, 42%),
@@ -71,17 +80,17 @@
     @include new(success, $success);
 
     @include api.inject(primary,
-        api.blend-mood(accent, h, 0.3),
+        api.blend-mood(accent, h),
         api.blend-mood(accent, s),
         api.blend-mood(accent, l));
 
     @include api.inject(secondary,
         api.blend-mood(accent-variant, h, 0.6),
         api.runtime(accent-variant, s),
-        api.runtime(accent-variant, l));
+        api.blend-mood(accent-variant, l, 0.6));
 
     @include api.inject(surface,
-        api.blend-mood(accent, h),
+        api.runtime(primary, h),
         10,
-        api.runtime(accent, l));
+        api.runtime(primary, l));
 }
