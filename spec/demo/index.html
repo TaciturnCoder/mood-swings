@@ -9,146 +9,59 @@
 
     <link rel="stylesheet" href="./index.css">
     <script src="./index.js"></script>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 3em;
-            height: 100vh;
-            width: 100vw;
-
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1em 2em;
-            align-content: center;
-
-            background-color: var(--mood-swings-surface);
-        }
-
-        div {
-            aspect-ratio: 3;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-
-            border: 0.3em solid var(--mood-swings-surface-container);
-            border-radius: 1em;
-        }
-
-        .mood {
-            aspect-ratio: unset;
-            grid-row: span 4;
-        }
-
-        .editable {
-            position: relative;
-        }
-
-        span {
-            position: absolute;
-
-            color: white;
-            mix-blend-mode: difference;
-        }
-
-        input[type="color"] {
-            position: absolute;
-
-            width: 100%;
-            height: 100%;
-            border: none;
-            background-color: transparent;
-            outline: none;
-        }
-
-    </style>
 </head>
 
 <body>
-    <div class="editable" style="background-color: var(--mood-swings-accent); color: var(--mood-swings-on-primary);">
+    <div class="editable accent">
         <input type="color" name="accent" onchange="swing(this);" />
         <span>Accent</span>
     </div>
-    <div style="background-color: var(--mood-swings-primary); color: var(--mood-swings-on-primary);">Primary</div>
-    <div style="background-color: var(--mood-swings-on-primary); color: var(--mood-swings-primary);">On Primary</div>
-    <div
-        style="background-color: var(--mood-swings-primary-container); color: var(--mood-swings-on-primary-container);">
-        Primary Container</div>
-    <div
-        style="background-color: var(--mood-swings-on-primary-container); color: var(--mood-swings-primary-container);">
-        On Primary Container</div>
+    <div class="primary">Primary</div>
+    <div class="on-primary">On Primary</div>
+    <div class="primary-container"> Primary Container</div>
+    <div class="on-primary-container"> On Primary Container</div>
 
-    <div class="editable"
-        style="background-color: var(--mood-swings-accent-variant); color: var(--mood-swings-on-secondary);">
-        <input type="color" name="accent-variant" onchange="swing(this);" />
-        <span>Accent Variant</span>
+    <div class="editable variant">
+        <input type="color" name="variant" onchange="swing(this);" />
+        <span>Variant</span>
     </div>
-    <div style="background-color: var(--mood-swings-secondary); color: var(--mood-swings-on-secondary);">Secondary</div>
-    <div style="background-color: var(--mood-swings-on-secondary); color: var(--mood-swings-secondary);">On Secondary
-    </div>
-    <div
-        style="background-color: var(--mood-swings-secondary-container); color: var(--mood-swings-on-secondary-container);">
-        Secondary Container</div>
-    <div
-        style="background-color: var(--mood-swings-on-secondary-container); color: var(--mood-swings-secondary-container);">
-        On Secondary Container</div>
+    <div class="secondary">Secondary</div>
+    <div class="on-secondary">On Secondary </div>
+    <div class="secondary-container"> Secondary Container</div>
+    <div class="on-secondary-container"> On Secondary Container</div>
 
-    <div class="mood editable" style="background-color: var(--mood-swings-mood); color: var(--mood-swings-on-surface);">
+    <div class="editable mood">
         <input type="color" name="mood" onchange="swing(this);" />
         <span>Mood</span>
     </div>
-    <div style="background-color: var(--mood-swings-surface); color: var(--mood-swings-on-surface);">Surface</div>
-    <div style="background-color: var(--mood-swings-on-surface); color: var(--mood-swings-surface);">On Surface</div>
-    <div
-        style="background-color: var(--mood-swings-surface-container); color: var(--mood-swings-on-surface-container);">
-        Surface Container</div>
-    <div
-        style="background-color: var(--mood-swings-on-surface-container); color: var(--mood-swings-surface-container);">
-        On Surface Container</div>
+    <div class="surface">Surface</div>
+    <div class="on-surface">On Surface</div>
+    <div class="surface-container"> Surface Container</div>
+    <div class="on-surface-container"> On Surface Container</div>
 
-    <div class="editable" style="background-color: var(--mood-swings-warning); color: var(--mood-swings-on-warning);">
+    <div class="editable error">
+        <input type="color" name="error" onchange="swing(this);" />
+        <span>Error</span>
+    </div>
+    <div class="on-error">On Error</div>
+    <div class="error-container"> Error Container</div>
+    <div class="on-error-container"> On Error Container</div>
+
+    <div class="editable warning">
         <input type="color" name="warning" onchange="swing(this);" />
         <span>Warning</span>
     </div>
-    <div style="background-color: var(--mood-swings-on-warning); color: var(--mood-swings-warning);">On Warning</div>
-    <div
-        style="background-color: var(--mood-swings-warning-container); color: var(--mood-swings-on-warning-container);">
-        Warning Container</div>
-    <div
-        style="background-color: var(--mood-swings-on-warning-container); color: var(--mood-swings-warning-container);">
-        On Warning Container</div>
+    <div class="on-warning">On Warning</div>
+    <div class="warning-container"> Warning Container</div>
+    <div class="on-warning-container"> On Warning Container</div>
 
-    <div class="editable"
-        style="background-color: var(--mood-swings-warning-variant); color: var(--mood-swings-on-warning-variant);">
-        <input type="color" name="warning-variant" onchange="swing(this);" />
-        <span>Warning Variant</span>
-    </div>
-    <div style="background-color: var(--mood-swings-on-warning-variant); color: var(--mood-swings-warning-variant);">On
-        Warning Variant</div>
-    <div
-        style="background-color: var(--mood-swings-warning-variant-container); color: var(--mood-swings-on-warning-variant-container);">
-        Warning Variant Container</div>
-    <div
-        style="background-color: var(--mood-swings-on-warning-variant-container); color: var(--mood-swings-warning-variant-container);">
-        On Warning Variant Container</div>
-
-    <div class="editable" style="background-color: var(--mood-swings-success); color: var(--mood-swings-on-success);">
+    <div class="editable success">
         <input type="color" name="success" onchange="swing(this);" />
         <span>Success</span>
     </div>
-    <div style="background-color: var(--mood-swings-on-success); color: var(--mood-swings-success);">On Success</div>
-    <div
-        style="background-color: var(--mood-swings-success-container); color: var(--mood-swings-on-success-container);">
-        Success Container</div>
-    <div
-        style="background-color: var(--mood-swings-on-success-container); color: var(--mood-swings-success-container);">
-        On Success Container</div>
+    <div class="on-success">On Success</div>
+    <div class="success-container"> Success Container</div>
+    <div class="on-success-container"> On Success Container</div>
 
 </body>
 

@@ -1,4 +1,5 @@
 @use './utils';
+@use './tokens';
 @use '../api';
 
 ////
@@ -31,17 +32,17 @@
 }
 
 /// Injects preset colors into the css scope
-/// @param {color} accent [hsl(270, 60%, 42%)]
+/// @param {color} accent [tokens.$accent]
 ///     Accent color
-/// @param {color} accent-variant [hsl(60, 60%, 42%)]
-///     Accent variant color
-/// @param {color} mood [hsl(0, 0%, 0%)]
+/// @param {color} variant [tokens.$variant]
+///     Variant color
+/// @param {color} mood [tokens.$mood]
 ///     Mood color
-/// @param {color} warning [hsl(0, 60%, 42%)]
+/// @param {color} error [tokens.$error]
+///     Error color
+/// @param {color} warning [tokens.$warning]
 ///     Warning color
-/// @param {color} warning-variant [hsl(60, 60%, 42%)]
-///     Warning variant color
-/// @param {color} success [hsl(120, 60%, 42%)]
+/// @param {color} success [tokens.$success]
 ///     Success color
 /// @requires {mixin} api.inject-hsl
 ///     <../../docs/api/#api-mixin-inject-hsl>
@@ -53,30 +54,36 @@
 ///     <../../docs/api/#api-function-blend-mood>
 /// @requires {function} api.runtime
 ///     <../../docs/api/#api-function-runtime>
+/// @requires {variable} accent
+/// @requires {variable} variant
+/// @requires {variable} mood
+/// @requires {variable} error
+/// @requires {variable} warning
+/// @requires {variable} success
 /// @requires {function} abstract
 /// @requires {mixin} new
-@mixin presets($accent: hsl(270, 60%, 42%),
-    $accent-variant: hsl(60, 60%, 42%),
-    $mood: hsl(0, 0%, 0%),
-    $warning: hsl(0, 60%, 42%),
-    $warning-variant: hsl(60, 60%, 42%),
-    $success: hsl(120, 60%, 42%)) {
+@mixin presets($accent: tokens.$accent,
+    $variant: tokens.$variant,
+    $mood: tokens.$mood,
+    $error: tokens.$error,
+    $warning: tokens.$warning,
+    $success: tokens.$success) {
     @include api.inject-hsl(accent,
         utils.abstract(hue($accent)),
         utils.abstract(saturation($accent)),
         utils.abstract(lightness($accent)));
-    @include api.inject-hsl(accent-variant,
-        utils.abstract(hue($accent-variant)),
-        utils.abstract(saturation($accent-variant)),
-        utils.abstract(lightness($accent-variant)));
+    @include api.inject-hsl(variant,
+        utils.abstract(hue($variant)),
+        utils.abstract(saturation($variant)),
+        utils.abstract(lightness($variant)));
     @include api.inject-hsl(mood,
         utils.abstract(hue($mood)),
         utils.abstract(saturation($mood)),
         utils.abstract(lightness($mood)));
     @include api.mood-flag;
 
+    @include new(error, $error);
     @include new(warning, $warning);
-    @include new(warning-variant, $warning-variant);
     @include new(success, $success);
 
     @include api.inject(primary,
@@ -85,9 +92,9 @@
         api.blend-mood(accent, l));
 
     @include api.inject(secondary,
-        api.blend-mood(accent-variant, h, 0.6),
-        api.runtime(accent-variant, s),
-        api.blend-mood(accent-variant, l, 0.6));
+        api.blend-mood(variant, h, tokens.$secondary-blend-ratio),
+        api.runtime(variant, s),
+        api.blend-mood(variant, l, tokens.$secondary-blend-ratio));
 
     @include api.inject(surface,
         api.runtime(primary, h),

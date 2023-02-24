@@ -21,12 +21,12 @@
 /// If the property is less than the limit, 0 is returned.
 /// @param {string} prop
 ///     CSS custom property to be compared
-/// @param {string | number} limit
+/// @param {string | number} limit [0]
 ///     Limit to compare against
 /// @requires {function} runtime
 /// @return {number}
 ///     CSS clamp notation
-@function hardlimit($prop, $limit) {
+@function hardlimit($prop, $limit: 0) {
     @return clamp(0, #{var.runtime($prop)} - #{$limit}, 1);
 }
 
