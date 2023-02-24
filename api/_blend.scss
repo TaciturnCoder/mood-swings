@@ -1,4 +1,5 @@
 @use '../src/utils';
+@use '../src/tokens';
 @use './var';
 
 ////
@@ -12,7 +13,7 @@
 /// @requires {function} utils.hardlimit
 ///     <../../spec/design/#utils-function-hardlimit>
 @mixin mood-flag {
-    @include utils.inject((mood--flag: clamp(0, utils.hardlimit(mood-s, 0) + utils.hardlimit(mood-l, 0), 1)));
+    @include utils.inject((mood--flag: clamp(0, utils.hardlimit(mood-s) + utils.hardlimit(mood-l), 1)));
 }
 
 /// Blends a color with the mood color
@@ -20,16 +21,18 @@
 ///     Name of the color
 /// @param {string} prop
 ///     Sub-property of the color
-/// @param {number} ratio [0.1]
-///     Ratio of the mood color
+/// @param {number} ratio [tokens.$blend-ratio]
+///     Ratio of the base color to mood color
 /// @return {*}
 ///     Value of the custom property
 /// @requires {function} utils.blend
 ///     <../../spec/design/#utils-function-blend>
 /// @requires {function} utils.runtime
 ///     <../../spec/design/#utils-function-runtime>
+/// @requires {variable} tokens.$blend-ratio
+///     <../../spec/design/#tokens-variable-blend-ratio>
 /// @requires {function} runtime
-@function blend-mood($name, $prop, $ratio: 0.1) {
+@function blend-mood($name, $prop, $ratio: tokens.$blend-ratio) {
     @return utils.blend(utils.runtime(mood--flag, $fallback: 0),
         utils.blend($ratio,
             var.runtime($name, $prop),

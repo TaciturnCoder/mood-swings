@@ -24,7 +24,7 @@ See [demo](https://TaciturnCoder.github.io/mood-swings/spec/demo)
 }
 
 body {
-    background.color: mood-swings.runtime(surface);
+    background-color: mood-swings.runtime(surface);
 }
 
 #cookies {

@@ -1,19 +1,38 @@
 :root {
-  --mood-swings-accent-h: 270;
+  --mood-swings-accent-h: 280;
   --mood-swings-accent-s: 60;
-  --mood-swings-accent-l: 42;
+  --mood-swings-accent-l: 30;
   --mood-swings-accent: hsl(var(--mood-swings-accent-h, 0), calc(clamp(0, var(--mood-swings-accent-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-accent-l, 0), 100) * 1%));
-  --mood-swings-accent-variant-h: 60;
-  --mood-swings-accent-variant-s: 60;
-  --mood-swings-accent-variant-l: 42;
-  --mood-swings-accent-variant: hsl(var(--mood-swings-accent-variant-h, 0), calc(clamp(0, var(--mood-swings-accent-variant-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-accent-variant-l, 0), 100) * 1%));
+  --mood-swings-variant-h: 150;
+  --mood-swings-variant-s: 60;
+  --mood-swings-variant-l: 30;
+  --mood-swings-variant: hsl(var(--mood-swings-variant-h, 0), calc(clamp(0, var(--mood-swings-variant-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-variant-l, 0), 100) * 1%));
   --mood-swings-mood-h: 0;
   --mood-swings-mood-s: 0;
   --mood-swings-mood-l: 0;
   --mood-swings-mood: hsl(var(--mood-swings-mood-h, 0), calc(clamp(0, var(--mood-swings-mood-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-mood-l, 0), 100) * 1%));
   --mood-swings-mood--flag: clamp(0, clamp(0, var(--mood-swings-mood-s) - 0, 1) + clamp(0, var(--mood-swings-mood-l) - 0, 1), 1);
-  --mood-swings-warning-h: 0;
-  --mood-swings-warning-s: 60;
+  --mood-swings-error-h: 357;
+  --mood-swings-error-s: 72;
+  --mood-swings-error-l: 42;
+  --mood-swings-error: hsl(var(--mood-swings-error-h, 0), calc(clamp(0, var(--mood-swings-error-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-error-l, 0), 100) * 1%));
+  --mood-swings-on-error-h: var(--mood-swings-error-h, 0);
+  --mood-swings-on-error-s: clamp(0, var(--mood-swings-error-s, 0), 100);
+  --mood-swings-on-error--sign: calc(-2 * clamp(0, var(--mood-swings-error-l) - 50, 1) + 1);
+  --mood-swings-on-error-l: calc(clamp(0, var(--mood-swings-error-l, 0), 100) + 50 * var(--mood-swings-on-error--sign));
+  --mood-swings-on-error: hsl(var(--mood-swings-on-error-h, 0), calc(clamp(0, var(--mood-swings-on-error-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-error-l, 0), 100) * 1%));
+  --mood-swings-error-container-h: var(--mood-swings-error-h, 0);
+  --mood-swings-error-container-s: clamp(0, var(--mood-swings-error-s, 0), 100);
+  --mood-swings-error-container--sign: calc(-2 * clamp(0, var(--mood-swings-error-l) - 30, 1) + 1);
+  --mood-swings-error-container-l: calc(clamp(0, var(--mood-swings-error-l, 0), 100) + 30 * var(--mood-swings-error-container--sign));
+  --mood-swings-error-container: hsl(var(--mood-swings-error-container-h, 0), calc(clamp(0, var(--mood-swings-error-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-error-container-l, 0), 100) * 1%));
+  --mood-swings-on-error-container-h: var(--mood-swings-error-container-h, 0);
+  --mood-swings-on-error-container-s: clamp(0, var(--mood-swings-error-container-s, 0), 100);
+  --mood-swings-on-error-container--sign: calc(-2 * clamp(0, var(--mood-swings-error-container-l) - 50, 1) + 1);
+  --mood-swings-on-error-container-l: calc(clamp(0, var(--mood-swings-error-container-l, 0), 100) + 50 * var(--mood-swings-on-error-container--sign));
+  --mood-swings-on-error-container: hsl(var(--mood-swings-on-error-container-h, 0), calc(clamp(0, var(--mood-swings-on-error-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-error-container-l, 0), 100) * 1%));
+  --mood-swings-warning-h: 48;
+  --mood-swings-warning-s: 72;
   --mood-swings-warning-l: 42;
   --mood-swings-warning: hsl(var(--mood-swings-warning-h, 0), calc(clamp(0, var(--mood-swings-warning-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-warning-l, 0), 100) * 1%));
   --mood-swings-on-warning-h: var(--mood-swings-warning-h, 0);
@@ -31,27 +50,8 @@
   --mood-swings-on-warning-container--sign: calc(-2 * clamp(0, var(--mood-swings-warning-container-l) - 50, 1) + 1);
   --mood-swings-on-warning-container-l: calc(clamp(0, var(--mood-swings-warning-container-l, 0), 100) + 50 * var(--mood-swings-on-warning-container--sign));
   --mood-swings-on-warning-container: hsl(var(--mood-swings-on-warning-container-h, 0), calc(clamp(0, var(--mood-swings-on-warning-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-warning-container-l, 0), 100) * 1%));
-  --mood-swings-warning-variant-h: 60;
-  --mood-swings-warning-variant-s: 60;
-  --mood-swings-warning-variant-l: 42;
-  --mood-swings-warning-variant: hsl(var(--mood-swings-warning-variant-h, 0), calc(clamp(0, var(--mood-swings-warning-variant-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-warning-variant-l, 0), 100) * 1%));
-  --mood-swings-on-warning-variant-h: var(--mood-swings-warning-variant-h, 0);
-  --mood-swings-on-warning-variant-s: clamp(0, var(--mood-swings-warning-variant-s, 0), 100);
-  --mood-swings-on-warning-variant--sign: calc(-2 * clamp(0, var(--mood-swings-warning-variant-l) - 50, 1) + 1);
-  --mood-swings-on-warning-variant-l: calc(clamp(0, var(--mood-swings-warning-variant-l, 0), 100) + 50 * var(--mood-swings-on-warning-variant--sign));
-  --mood-swings-on-warning-variant: hsl(var(--mood-swings-on-warning-variant-h, 0), calc(clamp(0, var(--mood-swings-on-warning-variant-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-warning-variant-l, 0), 100) * 1%));
-  --mood-swings-warning-variant-container-h: var(--mood-swings-warning-variant-h, 0);
-  --mood-swings-warning-variant-container-s: clamp(0, var(--mood-swings-warning-variant-s, 0), 100);
-  --mood-swings-warning-variant-container--sign: calc(-2 * clamp(0, var(--mood-swings-warning-variant-l) - 30, 1) + 1);
-  --mood-swings-warning-variant-container-l: calc(clamp(0, var(--mood-swings-warning-variant-l, 0), 100) + 30 * var(--mood-swings-warning-variant-container--sign));
-  --mood-swings-warning-variant-container: hsl(var(--mood-swings-warning-variant-container-h, 0), calc(clamp(0, var(--mood-swings-warning-variant-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-warning-variant-container-l, 0), 100) * 1%));
-  --mood-swings-on-warning-variant-container-h: var(--mood-swings-warning-variant-container-h, 0);
-  --mood-swings-on-warning-variant-container-s: clamp(0, var(--mood-swings-warning-variant-container-s, 0), 100);
-  --mood-swings-on-warning-variant-container--sign: calc(-2 * clamp(0, var(--mood-swings-warning-variant-container-l) - 50, 1) + 1);
-  --mood-swings-on-warning-variant-container-l: calc(clamp(0, var(--mood-swings-warning-variant-container-l, 0), 100) + 50 * var(--mood-swings-on-warning-variant-container--sign));
-  --mood-swings-on-warning-variant-container: hsl(var(--mood-swings-on-warning-variant-container-h, 0), calc(clamp(0, var(--mood-swings-on-warning-variant-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-warning-variant-container-l, 0), 100) * 1%));
-  --mood-swings-success-h: 120;
-  --mood-swings-success-s: 60;
+  --mood-swings-success-h: 150;
+  --mood-swings-success-s: 72;
   --mood-swings-success-l: 42;
   --mood-swings-success: hsl(var(--mood-swings-success-h, 0), calc(clamp(0, var(--mood-swings-success-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-success-l, 0), 100) * 1%));
   --mood-swings-on-success-h: var(--mood-swings-success-h, 0);
@@ -88,9 +88,9 @@
   --mood-swings-on-primary-container--sign: calc(-2 * clamp(0, var(--mood-swings-primary-container-l) - 50, 1) + 1);
   --mood-swings-on-primary-container-l: calc(clamp(0, var(--mood-swings-primary-container-l, 0), 100) + 50 * var(--mood-swings-on-primary-container--sign));
   --mood-swings-on-primary-container: hsl(var(--mood-swings-on-primary-container-h, 0), calc(clamp(0, var(--mood-swings-on-primary-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-primary-container-l, 0), 100) * 1%));
-  --mood-swings-secondary-h: calc(var(--mood-swings-mood--flag, 0) * calc(0.6 * var(--mood-swings-accent-variant-h, 0) + (1 - 0.6) * var(--mood-swings-mood-h, 0)) + (1 - var(--mood-swings-mood--flag, 0)) * var(--mood-swings-accent-variant-h, 0));
-  --mood-swings-secondary-s: clamp(0, var(--mood-swings-accent-variant-s, 0), 100);
-  --mood-swings-secondary-l: calc(var(--mood-swings-mood--flag, 0) * calc(0.6 * clamp(0, var(--mood-swings-accent-variant-l, 0), 100) + (1 - 0.6) * clamp(0, var(--mood-swings-mood-l, 0), 100)) + (1 - var(--mood-swings-mood--flag, 0)) * clamp(0, var(--mood-swings-accent-variant-l, 0), 100));
+  --mood-swings-secondary-h: calc(var(--mood-swings-mood--flag, 0) * calc(0.6 * var(--mood-swings-variant-h, 0) + (1 - 0.6) * var(--mood-swings-mood-h, 0)) + (1 - var(--mood-swings-mood--flag, 0)) * var(--mood-swings-variant-h, 0));
+  --mood-swings-secondary-s: clamp(0, var(--mood-swings-variant-s, 0), 100);
+  --mood-swings-secondary-l: calc(var(--mood-swings-mood--flag, 0) * calc(0.6 * clamp(0, var(--mood-swings-variant-l, 0), 100) + (1 - 0.6) * clamp(0, var(--mood-swings-mood-l, 0), 100)) + (1 - var(--mood-swings-mood--flag, 0)) * clamp(0, var(--mood-swings-variant-l, 0), 100));
   --mood-swings-secondary: hsl(var(--mood-swings-secondary-h, 0), calc(clamp(0, var(--mood-swings-secondary-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-secondary-l, 0), 100) * 1%));
   --mood-swings-on-secondary-h: var(--mood-swings-secondary-h, 0);
   --mood-swings-on-secondary-s: clamp(0, var(--mood-swings-secondary-s, 0), 100);
@@ -126,4 +126,199 @@
   --mood-swings-on-surface-container--sign: calc(-2 * clamp(0, var(--mood-swings-surface-container-l) - 50, 1) + 1);
   --mood-swings-on-surface-container-l: calc(clamp(0, var(--mood-swings-surface-container-l, 0), 100) + 50 * var(--mood-swings-on-surface-container--sign));
   --mood-swings-on-surface-container: hsl(var(--mood-swings-on-surface-container-h, 0), calc(clamp(0, var(--mood-swings-on-surface-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-surface-container-l, 0), 100) * 1%));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 3em;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(6em, 1fr));
+  gap: 1em 2em;
+  align-content: center;
+  background-color: var(--mood-swings-surface);
+}
+
+div {
+  aspect-ratio: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 0.3em solid var(--mood-swings-on-surface);
+  border-radius: 1em;
+}
+
+.editable {
+  position: relative;
+}
+
+span {
+  position: absolute;
+}
+
+input[type=color] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.accent {
+  --mood-swings-on-accent-h: var(--mood-swings-accent-h, 0);
+  --mood-swings-on-accent-s: clamp(0, var(--mood-swings-accent-s, 0), 100);
+  --mood-swings-on-accent--sign: calc(-2 * clamp(0, var(--mood-swings-accent-l) - 50, 1) + 1);
+  --mood-swings-on-accent-l: calc(clamp(0, var(--mood-swings-accent-l, 0), 100) + 50 * var(--mood-swings-on-accent--sign));
+  --mood-swings-on-accent: hsl(var(--mood-swings-on-accent-h, 0), calc(clamp(0, var(--mood-swings-on-accent-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-accent-l, 0), 100) * 1%));
+  background-color: var(--mood-swings-accent);
+  color: var(--mood-swings-on-accent);
+}
+
+.variant {
+  --mood-swings-on-variant-h: var(--mood-swings-variant-h, 0);
+  --mood-swings-on-variant-s: clamp(0, var(--mood-swings-variant-s, 0), 100);
+  --mood-swings-on-variant--sign: calc(-2 * clamp(0, var(--mood-swings-variant-l) - 50, 1) + 1);
+  --mood-swings-on-variant-l: calc(clamp(0, var(--mood-swings-variant-l, 0), 100) + 50 * var(--mood-swings-on-variant--sign));
+  --mood-swings-on-variant: hsl(var(--mood-swings-on-variant-h, 0), calc(clamp(0, var(--mood-swings-on-variant-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-variant-l, 0), 100) * 1%));
+  background-color: var(--mood-swings-variant);
+  color: var(--mood-swings-on-variant);
+}
+
+.mood {
+  aspect-ratio: unset;
+  grid-row: span 4;
+  --mood-swings-on-mood-h: var(--mood-swings-mood-h, 0);
+  --mood-swings-on-mood-s: clamp(0, var(--mood-swings-mood-s, 0), 100);
+  --mood-swings-on-mood--sign: calc(-2 * clamp(0, var(--mood-swings-mood-l) - 50, 1) + 1);
+  --mood-swings-on-mood-l: calc(clamp(0, var(--mood-swings-mood-l, 0), 100) + 50 * var(--mood-swings-on-mood--sign));
+  --mood-swings-on-mood: hsl(var(--mood-swings-on-mood-h, 0), calc(clamp(0, var(--mood-swings-on-mood-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-mood-l, 0), 100) * 1%));
+  background-color: var(--mood-swings-mood);
+  color: var(--mood-swings-on-mood);
+}
+
+.primary {
+  background-color: var(--mood-swings-primary);
+  color: var(--mood-swings-on-primary);
+}
+
+.on-primary {
+  background-color: var(--mood-swings-on-primary);
+  color: var(--mood-swings-primary);
+}
+
+.primary-container {
+  background-color: var(--mood-swings-primary-container);
+  color: var(--mood-swings-on-primary-container);
+}
+
+.on-primary-container {
+  background-color: var(--mood-swings-on-primary-container);
+  color: var(--mood-swings-primary-container);
+}
+
+.secondary {
+  background-color: var(--mood-swings-secondary);
+  color: var(--mood-swings-on-secondary);
+}
+
+.on-secondary {
+  background-color: var(--mood-swings-on-secondary);
+  color: var(--mood-swings-secondary);
+}
+
+.secondary-container {
+  background-color: var(--mood-swings-secondary-container);
+  color: var(--mood-swings-on-secondary-container);
+}
+
+.on-secondary-container {
+  background-color: var(--mood-swings-on-secondary-container);
+  color: var(--mood-swings-secondary-container);
+}
+
+.surface {
+  background-color: var(--mood-swings-surface);
+  color: var(--mood-swings-on-surface);
+}
+
+.on-surface {
+  background-color: var(--mood-swings-on-surface);
+  color: var(--mood-swings-surface);
+}
+
+.surface-container {
+  background-color: var(--mood-swings-surface-container);
+  color: var(--mood-swings-on-surface-container);
+}
+
+.on-surface-container {
+  background-color: var(--mood-swings-on-surface-container);
+  color: var(--mood-swings-surface-container);
+}
+
+.error {
+  background-color: var(--mood-swings-error);
+  color: var(--mood-swings-on-error);
+}
+
+.on-error {
+  background-color: var(--mood-swings-on-error);
+  color: var(--mood-swings-error);
+}
+
+.error-container {
+  background-color: var(--mood-swings-error-container);
+  color: var(--mood-swings-on-error-container);
+}
+
+.on-error-container {
+  background-color: var(--mood-swings-on-error-container);
+  color: var(--mood-swings-error-container);
+}
+
+.warning {
+  background-color: var(--mood-swings-warning);
+  color: var(--mood-swings-on-warning);
+}
+
+.on-warning {
+  background-color: var(--mood-swings-on-warning);
+  color: var(--mood-swings-warning);
+}
+
+.warning-container {
+  background-color: var(--mood-swings-warning-container);
+  color: var(--mood-swings-on-warning-container);
+}
+
+.on-warning-container {
+  background-color: var(--mood-swings-on-warning-container);
+  color: var(--mood-swings-warning-container);
+}
+
+.success {
+  background-color: var(--mood-swings-success);
+  color: var(--mood-swings-on-success);
+}
+
+.on-success {
+  background-color: var(--mood-swings-on-success);
+  color: var(--mood-swings-success);
+}
+
+.success-container {
+  background-color: var(--mood-swings-success-container);
+  color: var(--mood-swings-on-success-container);
+}
+
+.on-success-container {
+  background-color: var(--mood-swings-on-success-container);
+  color: var(--mood-swings-success-container);
 }

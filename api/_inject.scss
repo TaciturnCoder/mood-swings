@@ -1,4 +1,5 @@
 @use '../src/utils';
+@use '../src/tokens';
 @use './var';
 
 ////
@@ -41,7 +42,7 @@
 /// Injects an on-color into the css scope
 /// @param {string} name
 ///     Name of the color
-/// @param {number} shift [50]
+/// @param {number} shift [tokens.$on-shift]
 ///     Shift of the lightness
 /// @requires {mixin} utils.inject
 ///     <../../spec/design/#utils-mixin-inject>
@@ -49,9 +50,11 @@
 ///     <../../spec/design/#utils-function-hardlimit>
 /// @requires {function} utils.runtime
 ///     <../../spec/design/#utils-function-runtime>
+/// @requires {variable} tokens.$on-shift
+///     <../../spec/design/#tokens-variable-on-shift>
 /// @requires {function} runtime
 /// @requires {mixin} inject-color
-@mixin inject-on($name, $shift: 50) {
+@mixin inject-on($name, $shift: tokens.$on-shift) {
     @include utils.inject((on-#{$name}-h: var.runtime($name, h),
             on-#{$name}-s: var.runtime($name, s),
             on-#{$name}--sign: calc(-2 * utils.hardlimit(#{$name}-l, 100 - $shift) + 1),
@@ -63,7 +66,7 @@
 /// Injects a color-container into the css scope
 /// @param {string} name
 ///     Name of the color
-/// @param {number} shift [30]
+/// @param {number} shift [tokens.$container-shift]
 ///     Shift of the lightness
 /// @requires {mixin} utils.inject
 ///     <../../spec/design/#utils-mixin-inject>
@@ -71,9 +74,11 @@
 ///    <../../spec/design/#utils-function-hardlimit>
 /// @requires {function} utils.runtime
 ///     <../../spec/design/#utils-function-runtime>
+/// @requires {variable} tokens.$container-shift
+///     <../../spec/design/#tokens-variable-container-shift>
 /// @requires {function} runtime
 /// @requires {mixin} inject-color
-@mixin inject-container($name, $shift: 30) {
+@mixin inject-container($name, $shift: tokens.$container-shift) {
     @include utils.inject((#{$name}-container-h: var.runtime($name, h),
             #{$name}-container-s: var.runtime($name, s),
             #{$name}-container--sign: calc(-2 * utils.hardlimit(#{$name}-l, $shift) + 1),

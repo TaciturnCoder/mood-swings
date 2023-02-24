@@ -1,5 +1,193 @@
 @use '../../index' as mood-swings;
+@use '../../api';
 
 :root {
     @include mood-swings.presets;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 3em;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(6em, 1fr));
+    gap: 1em 2em;
+    align-content: center;
+    background-color: mood-swings.runtime(surface);
+}
+
+div {
+    aspect-ratio: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 0.3em solid mood-swings.runtime(on-surface);
+    border-radius: 1em;
+}
+
+.editable {
+    position: relative;
+}
+
+span {
+    position: absolute;
+}
+
+input[type="color"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.accent {
+    @include api.inject-on(accent);
+
+    background-color: mood-swings.runtime(accent);
+    color: mood-swings.runtime(on-accent);
+}
+
+.variant {
+    @include api.inject-on(variant);
+
+    background-color: mood-swings.runtime(variant);
+    color: mood-swings.runtime(on-variant);
+}
+
+.mood {
+    aspect-ratio: unset;
+    grid-row: span 4;
+
+    @include api.inject-on(mood);
+
+    background-color: mood-swings.runtime(mood);
+    color: mood-swings.runtime(on-mood);
+}
+
+.primary {
+    background-color: mood-swings.runtime(primary);
+    color: mood-swings.runtime(on-primary);
+}
+
+.on-primary {
+    background-color: mood-swings.runtime(on-primary);
+    color: mood-swings.runtime(primary);
+}
+
+.primary-container {
+    background-color: mood-swings.runtime(primary-container);
+    color: mood-swings.runtime(on-primary-container);
+}
+
+.on-primary-container {
+    background-color: mood-swings.runtime(on-primary-container);
+    color: mood-swings.runtime(primary-container);
+}
+
+.secondary {
+    background-color: mood-swings.runtime(secondary);
+    color: mood-swings.runtime(on-secondary);
+}
+
+.on-secondary {
+    background-color: mood-swings.runtime(on-secondary);
+    color: mood-swings.runtime(secondary);
+}
+
+.secondary-container {
+    background-color: mood-swings.runtime(secondary-container);
+    color: mood-swings.runtime(on-secondary-container);
+}
+
+.on-secondary-container {
+    background-color: mood-swings.runtime(on-secondary-container);
+    color: mood-swings.runtime(secondary-container);
+}
+
+.surface {
+    background-color: mood-swings.runtime(surface);
+    color: mood-swings.runtime(on-surface);
+}
+
+.on-surface {
+    background-color: mood-swings.runtime(on-surface);
+    color: mood-swings.runtime(surface);
+}
+
+.surface-container {
+    background-color: mood-swings.runtime(surface-container);
+    color: mood-swings.runtime(on-surface-container);
+}
+
+.on-surface-container {
+    background-color: mood-swings.runtime(on-surface-container);
+    color: mood-swings.runtime(surface-container);
+}
+
+.error {
+    background-color: mood-swings.runtime(error);
+    color: mood-swings.runtime(on-error);
+}
+
+.on-error {
+    background-color: mood-swings.runtime(on-error);
+    color: mood-swings.runtime(error);
+}
+
+.error-container {
+    background-color: mood-swings.runtime(error-container);
+    color: mood-swings.runtime(on-error-container);
+}
+
+.on-error-container {
+    background-color: mood-swings.runtime(on-error-container);
+    color: mood-swings.runtime(error-container);
+}
+
+.warning {
+    background-color: mood-swings.runtime(warning);
+    color: mood-swings.runtime(on-warning);
+}
+
+.on-warning {
+    background-color: mood-swings.runtime(on-warning);
+    color: mood-swings.runtime(warning);
+}
+
+.warning-container {
+    background-color: mood-swings.runtime(warning-container);
+    color: mood-swings.runtime(on-warning-container);
+}
+
+.on-warning-container {
+    background-color: mood-swings.runtime(on-warning-container);
+    color: mood-swings.runtime(warning-container);
+}
+
+.success {
+    background-color: mood-swings.runtime(success);
+    color: mood-swings.runtime(on-success);
+}
+
+.on-success {
+    background-color: mood-swings.runtime(on-success);
+    color: mood-swings.runtime(success);
+}
+
+.success-container {
+    background-color: mood-swings.runtime(success-container);
+    color: mood-swings.runtime(on-success-container);
+}
+
+.on-success-container {
+    background-color: mood-swings.runtime(on-success-container);
+    color: mood-swings.runtime(success-container);
 }

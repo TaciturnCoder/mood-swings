@@ -1,3 +1,5 @@
+@use '../tokens';
+
 ////
 /// @access public
 /// @group utils
@@ -6,31 +8,45 @@
 /// Point to a CSS custom property
 /// @param {string} prop
 ///     CSS custom property to retrive
-/// @param {string} prefix ['mood-swings']
+/// @param {string} prefix [tokens.$prefix]
 ///     Prefix to apply
 /// @param {*} fallback [null]
 ///    Fallback value to return if property is not defined
+/// @requires {variable} prefix
 /// @return {*}
 ///     Pointer to the CSS custom property
-@function runtime($prop, $prefix: 'mood-swings', $fallback: null) {
+@function runtime($prop, $prefix: tokens.$prefix, $fallback: null) {
+    $-prop: $prop;
+
+    @if $prefix {
+        $-prop: '#{$prefix}-#{$prop}';
+    }
+
     @if $fallback {
-        @return var(--#{$prefix}-#{$prop}, $fallback);
+        @return var(--#{$-prop}, $fallback);
     }
 
     @else {
-        @return var(--#{$prefix}-#{$prop});
+        @return var(--#{$-prop});
     }
 }
 
 /// Inject a map of CSS custom properties into the CSS scope
 /// @param {map} vars
 ///     Key-value pairs to inject
-/// @param {string} prefix ['mood-swings']
+/// @param {string} prefix [tokens.$prefix]
 ///     Prefix to apply
-@mixin inject($vars, $prefix: 'mood-swings') {
+/// @requires {variable} prefix
+@mixin inject($vars, $prefix: tokens.$prefix) {
 
     @each $prop,
     $value in $vars {
-        --#{$prefix}-#{$prop}: #{$value};
+        @if $prefix {
+            --#{$prefix}-#{$prop}: #{$value};
+        }
+
+        @else {
+            --#{$prop}: #{$value};
+        }
     }
 }
