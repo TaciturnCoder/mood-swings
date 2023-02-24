@@ -126,11 +126,11 @@
   --mood-swings-on-surface-container--sign: calc(-2 * clamp(0, var(--mood-swings-surface-container-l) - 50, 1) + 1);
   --mood-swings-on-surface-container-l: calc(clamp(0, var(--mood-swings-surface-container-l, 0), 100) + 50 * var(--mood-swings-on-surface-container--sign));
   --mood-swings-on-surface-container: hsl(var(--mood-swings-on-surface-container-h, 0), calc(clamp(0, var(--mood-swings-on-surface-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-surface-container-l, 0), 100) * 1%));
+  font-size: calc(6px + 0.6em);
 }
 
 * {
   box-sizing: border-box;
-  font-size: 18px;
 }
 
 body {

@@ -1,19 +1,30 @@
 @use './utils';
-@use './tokens';
-@use '../api';
+@use 'tokens';
+@use 'api';
 
 ////
 /// @access public
 /// @group wrapper
 ////
 
-/// Creates a new color
+/// Injects following CSS custom properties into the css scope.
+///     + color
+///     + on-color
+///     + container-color
+///     + on-container-color
+/// This property is available at runtime.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings';
+///     :root {
+///         @include mood-swings.new('my-color', #1f7a4d);
+///     }
 /// @param {string} name
-///     Name of the color
+///     CSS custom property name for color
 /// @param {color} color
-///     Color
+///     Value of the color.
+///     Can be any valid CSS color.
 /// @requires {mixin} api.inject
-///     <../../docs/api/#api-mixin-inject>
+///     <./api/#api-mixin-inject>
 /// @requires {function} abstract
 @mixin new($name, $color) {
     @include api.inject($name,
@@ -22,46 +33,88 @@
         utils.abstract(lightness($color)));
 }
 
-/// Returns a runtime color
+/// Returns var notation for a CSS custom property.
+/// This value is evaluated at runtime.
+/// And can be used for user defined inputs.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings';
+///     :root {
+///         @include mood-swings.presets;
+///     }
+///     body {
+///         background-color: mood-swings.runtime('surface');
+///         color: mood-swings.runtime('on-surface');
+///     }
+/// @example scss
+///     @use '@dwijbavisi/mood-swings';
+///     :root {
+///         @include mood-swings.new('notify', orange);
+///     }
+///     .cookies {
+///         background-color: mood-swings.runtime('notify');
+///         color: mood-swings.runtime('on-notify');
+///     }
 /// @param {string} name
-///     Name of the color
+///     CSS custom property name for color
 /// @requires {function} api.runtime
-///     <../../docs/api/#api-function-runtime>
+///     <./api/#api-function-runtime>
 @function runtime($name) {
     @return api.runtime($name);
 }
 
-/// Injects preset colors into the css scope
+/// Injects preset color CSS custom properties into the css scope
+/// @example scss
+///     @use '@dwijbavisi/mood-swings';
+///
+///     :root {
+///         @include mood-swings.presets;
+///     }
+///
+///     .primary {
+///         background-color: mood-swings.runtime('primary');
+///         color: mood-swings.runtime('on-primary');
+///     }
 /// @param {color} accent [tokens.$accent]
-///     Accent color
+///     Accent color for the color scheme
 /// @param {color} variant [tokens.$variant]
-///     Variant color
+///     Variant color for the color scheme
 /// @param {color} mood [tokens.$mood]
-///     Mood color
+///     Mood color for the color scheme
 /// @param {color} error [tokens.$error]
-///     Error color
+///     Error color for the color scheme
 /// @param {color} warning [tokens.$warning]
-///     Warning color
+///     Warning color for the color scheme
 /// @param {color} success [tokens.$success]
-///     Success color
+///     Success color for the color scheme
 /// @requires {mixin} api.inject-hsl
-///     <../../docs/api/#api-mixin-inject-hsl>
+///     <./api/#api-mixin-inject-hsl>
 /// @requires {mixin} api.inject
-///     <../../docs/api/#api-mixin-inject>
+///     <./api/#api-mixin-inject>
 /// @requires {mixin} api.mood-flag
-///     <../../docs/api/#api-mixin-mood-flag>
+///     <./api/#api-mixin-mood-flag>
 /// @requires {function} api.blend-mood
-///     <../../docs/api/#api-function-blend-mood>
+///     <./api/#api-function-blend-mood>
 /// @requires {function} api.runtime
-///     <../../docs/api/#api-function-runtime>
-/// @requires {variable} accent
-/// @requires {variable} variant
-/// @requires {variable} mood
-/// @requires {variable} error
-/// @requires {variable} warning
-/// @requires {variable} success
-/// @requires {function} abstract
+///     <./api/#api-function-runtime>
+/// @requires {variable} tokens.$accent
+///     <./tokens/#tokens-variable-accent>
+/// @requires {variable} tokens.$variant
+///     <./tokens/#tokens-variable-variant>
+/// @requires {variable} tokens.$mood
+///     <./tokens/#tokens-variable-mood>
+/// @requires {variable} tokens.$error
+///     <./tokens/#tokens-variable-error>
+/// @requires {variable} tokens.$warning
+///     <./tokens/#tokens-variable-warning>
+/// @requires {variable} tokens.$success
+///     <./tokens/#tokens-variable-success>
+/// @requires {variable} tokens.$abstract
+///     <./tokens/#tokens-variable-abstract>
+/// @requires {variable} tokens.$variant-blend-ratio
+///     <./tokens/#tokens-variable-variant-blend-ratio>
 /// @requires {mixin} new
+/// @requires {function} abstract
+/// @requires {function} runtime
 @mixin presets($accent: tokens.$accent,
     $variant: tokens.$variant,
     $mood: tokens.$mood,
@@ -92,9 +145,9 @@
         api.blend-mood(accent, l));
 
     @include api.inject(secondary,
-        api.blend-mood(variant, h, tokens.$secondary-blend-ratio),
+        api.blend-mood(variant, h, tokens.$variant-blend-ratio),
         api.runtime(variant, s),
-        api.blend-mood(variant, l, tokens.$secondary-blend-ratio));
+        api.blend-mood(variant, l, tokens.$variant-blend-ratio));
 
     @include api.inject(surface,
         api.runtime(primary, h),
