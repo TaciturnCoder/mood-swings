@@ -1,27 +1,31 @@
-@use '../src/utils';
+@use 'src/utils';
 
 ////
 /// @access public
 /// @group api
 ////
 
-/// Returns the notation for a CSS custom property color
+/// Returns var notation for a CSS custom property.
+/// This value is evaluated at runtime.
+/// And can be used for user defined inputs.
 /// @param {string} name
-///     Name of the color
-/// @param {string} prop [null]
+///     CSS custom property name for color to retrive
+/// @param {'h', 's', 'l'} prop [null]
 ///     Sub-property of the color
-/// @requires {function} utils.runtime
-///     <../../spec/design/#utils-function-runtime>
+/// @requires {function} utils.tunrime
+///     <../#utils-function-runtime>
 /// @return {*}
-///     Notation for the CSS custom property
+///     var notation for the CSS custom property
 @function runtime($name, $prop: null) {
     @if $prop {
+        $-prop: '#{$name}-#{$prop}';
+
         @if $prop =='h' {
-            @return utils.runtime(#{$name}-#{$prop}, $fallback: 0);
+            @return utils.runtime($-prop, $fallback: 0);
         }
 
         @else {
-            @return clamp(0, utils.runtime(#{$name}-#{$prop}, $fallback: 0), 100);
+            @return clamp(0, utils.runtime($-prop, $fallback: 0), 100);
         }
     }
 

@@ -1,20 +1,25 @@
-@use '../tokens';
+@use 'tokens';
 
 ////
 /// @access public
 /// @group utils
 ////
 
-/// Point to a CSS custom property
+/// Returns var notation for a CSS custom property.
+/// This value is evaluated at runtime.
+/// And can be used for user defined inputs.
 /// @param {string} prop
 ///     CSS custom property to retrive
 /// @param {string} prefix [tokens.$prefix]
-///     Prefix to apply
+///     Prefix to be applied to the property.
+///     Set to false or null to exclude prefix
 /// @param {*} fallback [null]
-///    Fallback value to return if property is not defined
-/// @requires {variable} prefix
+///     Fallback value to return if property is not defined.
+///     If not provided, returns var() without fallback
+/// @requires {variable} tokens.$prefix
+///     <./tokens/#tokens-variable-prefix>
 /// @return {*}
-///     Pointer to the CSS custom property
+///     var notation for the CSS custom property
 @function runtime($prop, $prefix: tokens.$prefix, $fallback: null) {
     $-prop: $prop;
 
@@ -31,12 +36,15 @@
     }
 }
 
-/// Inject a map of CSS custom properties into the CSS scope
+/// Inject a map of CSS custom properties into the CSS scope.
+/// This properties are available at runtime.
 /// @param {map} vars
 ///     Key-value pairs to inject
 /// @param {string} prefix [tokens.$prefix]
-///     Prefix to apply
-/// @requires {variable} prefix
+///     Prefix to be applied to the property.
+///     Set to false or null to exclude prefix
+/// @requires {variable} tokens.$prefix
+///     <./tokens/#tokens-variable-prefix>
 @mixin inject($vars, $prefix: tokens.$prefix) {
 
     @each $prop,

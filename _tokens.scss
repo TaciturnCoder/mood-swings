@@ -1,0 +1,100 @@
+////
+/// @access public
+/// @group tokens
+////
+
+/// Prefix to be applied to all CSS custom properties.
+/// Set to false or null to exclude prefix.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $prefix: 'mood-swings'
+///     );
+/// @type string
+$prefix: null !default;
+
+/// Accent color for the color scheme.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $accent: hsl(36deg 100% 50%)
+///     );
+/// @type Color
+$accent: hsl(280deg 60% 30%) !default;
+
+/// Variant color for the color scheme.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $variant: #1f7a4d
+///     );
+/// @type Color
+$variant: hsl(150deg 60% 30%) !default;
+
+/// Mood color for the color scheme.
+/// By default, this is the same set to black.
+/// When black, it does not affect the color scheme.
+/// Otherwise, it blends with accent and variant colors.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $mood: #451476
+///     );
+/// @type Color
+$mood: #000 !default;
+
+/// Error color for the color scheme.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $error: red
+///     );
+/// @type Color
+$error: hsl(357deg 72% 42%) !default;
+
+/// Warning color for the color scheme.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $warning: orange
+///     );
+/// @type Color
+$warning: hsl(48deg 72% 42%) !default;
+
+/// Success color for the color scheme.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $success: lightgreen
+///     );
+/// @type Color
+$success: hsl(150deg 72% 42%) !default;
+
+/// Background to text lightness contrast.
+/// Should be between 0 to 50.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $on-shift: 40
+///     );
+/// @type number
+$on-shift: 50 !default;
+
+/// Background to container lightness contrast.
+/// Should be between 0 to 50.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $container-shift: 20
+///     );
+/// @type number
+$container-shift: 30 !default;
+
+/// Default color to mood blend ratio.
+/// Used to generate primary color.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $blend-ratio: 0.2
+///     );
+/// @type number
+$blend-ratio: 0.1 !default;
+
+/// Variant to mood blend ratio.
+/// Used to generate secondary color.
+/// @example scss
+///     @use '@dwijbavisi/mood-swings/tokens' with (
+///         $variant-blend-ratio: 0.4
+///     );
+/// @type number
+$variant-blend-ratio: 0.6 !default;
