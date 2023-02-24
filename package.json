@@ -1,6 +1,6 @@
 {
     "name": "@dwijbavisi/mood-swings",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "🎨 Color scheme that adapts to your mood",
     "main": "_index.scss",
     "scripts": {
