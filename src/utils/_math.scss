@@ -3,47 +3,50 @@
 
 ////
 /// @access public
-/// @group utils
+/// @group Utils
 ////
 
-/// Take a numeric value and return its unitless value.
-/// This is useful for using abstract values in calculations.
-/// This function is evaluated at compile time.
+/// Take a numeric value and return its unitless value. \
+/// This is useful for using abstract values in calculations. \
+/// This function is evaluated at compile time. \
 /// Not accessible at runtime.
 /// @example scss
 ///     --hue: 30deg;
 ///     $shift: 10%;
 ///
+///     --new-hue: calc(#{var.runtime(hue)} * (1 + $shift * 0.01}));
+///     // --new-hue: calc(var(--hue) * (1 + 0.1%));
+///
 ///     --new-hue: calc(#{var.runtime(hue)} * (1 + #{abstract($shift) * 0.01}));
-///     // --new-hue: calc(30deg * (1 + 0.1));
+///     // --new-hue: calc(var(--hue) * (1 + 0.1));
 /// @param {*} concrete
 ///     Numeric / Concrete value from which to derive unitless value
-/// @requires {function} math.div
 /// @return {*}
 ///     Abstract (unitless) value
+/// @requires {function} math.div
 @function abstract($concrete) {
     @return math.div($concrete, ($concrete * 0 + 1));
 }
 
-/// Compares a CSS custom property to a limit and returns 1 or 0.
-/// If the property is greater than the limit, 1 is returned.
+/// Compares a CSS custom property to a limit and returns 1 or 0. \
+/// If the property is greater than the limit, 1 is returned. \
 /// If the property is less than the limit, 0 is returned.
 /// @param {string} prop
 ///     CSS custom property under evaluation
 /// @param {string | number} limit [0]
-///     Limit to compare against.
-///     If 0, returns 1 if property is greater than 0.
-///     It should have same unit as the property
-/// @requires {function} runtime
+///     Limit to compare against. \
+///     If 0, returns 1 if property is greater than 0. \
+///     It should have same unit as the property.
 /// @return {number}
 ///     CSS clamp notation implementing the comparison
+/// @requires {function} runtime
 @function hardlimit($prop, $limit: 0) {
     @return clamp(0, #{var.runtime($prop)} - #{$limit}, 1);
 }
 
-/// Blends two values based on a flag.
-/// true and false values should have same unit.
-/// flag should be unitless
+/// Blends two values based on a flag. \
+/// true and false values should have same unit. \
+/// Flag should be unitless.
 /// @param {number} flag
 ///     Flag to blend
 /// @param {number} true

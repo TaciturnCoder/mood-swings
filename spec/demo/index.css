@@ -1,131 +1,131 @@
 :root {
-  --mood-swings-accent-h: 280;
-  --mood-swings-accent-s: 60;
-  --mood-swings-accent-l: 30;
-  --mood-swings-accent: hsl(var(--mood-swings-accent-h, 0), calc(clamp(0, var(--mood-swings-accent-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-accent-l, 0), 100) * 1%));
-  --mood-swings-variant-h: 150;
-  --mood-swings-variant-s: 60;
-  --mood-swings-variant-l: 30;
-  --mood-swings-variant: hsl(var(--mood-swings-variant-h, 0), calc(clamp(0, var(--mood-swings-variant-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-variant-l, 0), 100) * 1%));
-  --mood-swings-mood-h: 0;
-  --mood-swings-mood-s: 0;
-  --mood-swings-mood-l: 0;
-  --mood-swings-mood: hsl(var(--mood-swings-mood-h, 0), calc(clamp(0, var(--mood-swings-mood-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-mood-l, 0), 100) * 1%));
-  --mood-swings-mood--flag: clamp(0, clamp(0, var(--mood-swings-mood-s) - 0, 1) + clamp(0, var(--mood-swings-mood-l) - 0, 1), 1);
-  --mood-swings-error-h: 357;
-  --mood-swings-error-s: 72;
-  --mood-swings-error-l: 42;
-  --mood-swings-error: hsl(var(--mood-swings-error-h, 0), calc(clamp(0, var(--mood-swings-error-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-error-l, 0), 100) * 1%));
-  --mood-swings-on-error-h: var(--mood-swings-error-h, 0);
-  --mood-swings-on-error-s: clamp(0, var(--mood-swings-error-s, 0), 100);
-  --mood-swings-on-error--sign: calc(-2 * clamp(0, var(--mood-swings-error-l) - 50, 1) + 1);
-  --mood-swings-on-error-l: calc(clamp(0, var(--mood-swings-error-l, 0), 100) + 50 * var(--mood-swings-on-error--sign));
-  --mood-swings-on-error: hsl(var(--mood-swings-on-error-h, 0), calc(clamp(0, var(--mood-swings-on-error-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-error-l, 0), 100) * 1%));
-  --mood-swings-error-container-h: var(--mood-swings-error-h, 0);
-  --mood-swings-error-container-s: clamp(0, var(--mood-swings-error-s, 0), 100);
-  --mood-swings-error-container--sign: calc(-2 * clamp(0, var(--mood-swings-error-l) - 30, 1) + 1);
-  --mood-swings-error-container-l: calc(clamp(0, var(--mood-swings-error-l, 0), 100) + 30 * var(--mood-swings-error-container--sign));
-  --mood-swings-error-container: hsl(var(--mood-swings-error-container-h, 0), calc(clamp(0, var(--mood-swings-error-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-error-container-l, 0), 100) * 1%));
-  --mood-swings-on-error-container-h: var(--mood-swings-error-container-h, 0);
-  --mood-swings-on-error-container-s: clamp(0, var(--mood-swings-error-container-s, 0), 100);
-  --mood-swings-on-error-container--sign: calc(-2 * clamp(0, var(--mood-swings-error-container-l) - 50, 1) + 1);
-  --mood-swings-on-error-container-l: calc(clamp(0, var(--mood-swings-error-container-l, 0), 100) + 50 * var(--mood-swings-on-error-container--sign));
-  --mood-swings-on-error-container: hsl(var(--mood-swings-on-error-container-h, 0), calc(clamp(0, var(--mood-swings-on-error-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-error-container-l, 0), 100) * 1%));
-  --mood-swings-warning-h: 48;
-  --mood-swings-warning-s: 72;
-  --mood-swings-warning-l: 42;
-  --mood-swings-warning: hsl(var(--mood-swings-warning-h, 0), calc(clamp(0, var(--mood-swings-warning-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-warning-l, 0), 100) * 1%));
-  --mood-swings-on-warning-h: var(--mood-swings-warning-h, 0);
-  --mood-swings-on-warning-s: clamp(0, var(--mood-swings-warning-s, 0), 100);
-  --mood-swings-on-warning--sign: calc(-2 * clamp(0, var(--mood-swings-warning-l) - 50, 1) + 1);
-  --mood-swings-on-warning-l: calc(clamp(0, var(--mood-swings-warning-l, 0), 100) + 50 * var(--mood-swings-on-warning--sign));
-  --mood-swings-on-warning: hsl(var(--mood-swings-on-warning-h, 0), calc(clamp(0, var(--mood-swings-on-warning-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-warning-l, 0), 100) * 1%));
-  --mood-swings-warning-container-h: var(--mood-swings-warning-h, 0);
-  --mood-swings-warning-container-s: clamp(0, var(--mood-swings-warning-s, 0), 100);
-  --mood-swings-warning-container--sign: calc(-2 * clamp(0, var(--mood-swings-warning-l) - 30, 1) + 1);
-  --mood-swings-warning-container-l: calc(clamp(0, var(--mood-swings-warning-l, 0), 100) + 30 * var(--mood-swings-warning-container--sign));
-  --mood-swings-warning-container: hsl(var(--mood-swings-warning-container-h, 0), calc(clamp(0, var(--mood-swings-warning-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-warning-container-l, 0), 100) * 1%));
-  --mood-swings-on-warning-container-h: var(--mood-swings-warning-container-h, 0);
-  --mood-swings-on-warning-container-s: clamp(0, var(--mood-swings-warning-container-s, 0), 100);
-  --mood-swings-on-warning-container--sign: calc(-2 * clamp(0, var(--mood-swings-warning-container-l) - 50, 1) + 1);
-  --mood-swings-on-warning-container-l: calc(clamp(0, var(--mood-swings-warning-container-l, 0), 100) + 50 * var(--mood-swings-on-warning-container--sign));
-  --mood-swings-on-warning-container: hsl(var(--mood-swings-on-warning-container-h, 0), calc(clamp(0, var(--mood-swings-on-warning-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-warning-container-l, 0), 100) * 1%));
-  --mood-swings-success-h: 150;
-  --mood-swings-success-s: 72;
-  --mood-swings-success-l: 42;
-  --mood-swings-success: hsl(var(--mood-swings-success-h, 0), calc(clamp(0, var(--mood-swings-success-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-success-l, 0), 100) * 1%));
-  --mood-swings-on-success-h: var(--mood-swings-success-h, 0);
-  --mood-swings-on-success-s: clamp(0, var(--mood-swings-success-s, 0), 100);
-  --mood-swings-on-success--sign: calc(-2 * clamp(0, var(--mood-swings-success-l) - 50, 1) + 1);
-  --mood-swings-on-success-l: calc(clamp(0, var(--mood-swings-success-l, 0), 100) + 50 * var(--mood-swings-on-success--sign));
-  --mood-swings-on-success: hsl(var(--mood-swings-on-success-h, 0), calc(clamp(0, var(--mood-swings-on-success-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-success-l, 0), 100) * 1%));
-  --mood-swings-success-container-h: var(--mood-swings-success-h, 0);
-  --mood-swings-success-container-s: clamp(0, var(--mood-swings-success-s, 0), 100);
-  --mood-swings-success-container--sign: calc(-2 * clamp(0, var(--mood-swings-success-l) - 30, 1) + 1);
-  --mood-swings-success-container-l: calc(clamp(0, var(--mood-swings-success-l, 0), 100) + 30 * var(--mood-swings-success-container--sign));
-  --mood-swings-success-container: hsl(var(--mood-swings-success-container-h, 0), calc(clamp(0, var(--mood-swings-success-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-success-container-l, 0), 100) * 1%));
-  --mood-swings-on-success-container-h: var(--mood-swings-success-container-h, 0);
-  --mood-swings-on-success-container-s: clamp(0, var(--mood-swings-success-container-s, 0), 100);
-  --mood-swings-on-success-container--sign: calc(-2 * clamp(0, var(--mood-swings-success-container-l) - 50, 1) + 1);
-  --mood-swings-on-success-container-l: calc(clamp(0, var(--mood-swings-success-container-l, 0), 100) + 50 * var(--mood-swings-on-success-container--sign));
-  --mood-swings-on-success-container: hsl(var(--mood-swings-on-success-container-h, 0), calc(clamp(0, var(--mood-swings-on-success-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-success-container-l, 0), 100) * 1%));
-  --mood-swings-primary-h: calc(var(--mood-swings-mood--flag, 0) * calc(0.1 * var(--mood-swings-accent-h, 0) + (1 - 0.1) * var(--mood-swings-mood-h, 0)) + (1 - var(--mood-swings-mood--flag, 0)) * var(--mood-swings-accent-h, 0));
-  --mood-swings-primary-s: calc(var(--mood-swings-mood--flag, 0) * calc(0.1 * clamp(0, var(--mood-swings-accent-s, 0), 100) + (1 - 0.1) * clamp(0, var(--mood-swings-mood-s, 0), 100)) + (1 - var(--mood-swings-mood--flag, 0)) * clamp(0, var(--mood-swings-accent-s, 0), 100));
-  --mood-swings-primary-l: calc(var(--mood-swings-mood--flag, 0) * calc(0.1 * clamp(0, var(--mood-swings-accent-l, 0), 100) + (1 - 0.1) * clamp(0, var(--mood-swings-mood-l, 0), 100)) + (1 - var(--mood-swings-mood--flag, 0)) * clamp(0, var(--mood-swings-accent-l, 0), 100));
-  --mood-swings-primary: hsl(var(--mood-swings-primary-h, 0), calc(clamp(0, var(--mood-swings-primary-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-primary-l, 0), 100) * 1%));
-  --mood-swings-on-primary-h: var(--mood-swings-primary-h, 0);
-  --mood-swings-on-primary-s: clamp(0, var(--mood-swings-primary-s, 0), 100);
-  --mood-swings-on-primary--sign: calc(-2 * clamp(0, var(--mood-swings-primary-l) - 50, 1) + 1);
-  --mood-swings-on-primary-l: calc(clamp(0, var(--mood-swings-primary-l, 0), 100) + 50 * var(--mood-swings-on-primary--sign));
-  --mood-swings-on-primary: hsl(var(--mood-swings-on-primary-h, 0), calc(clamp(0, var(--mood-swings-on-primary-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-primary-l, 0), 100) * 1%));
-  --mood-swings-primary-container-h: var(--mood-swings-primary-h, 0);
-  --mood-swings-primary-container-s: clamp(0, var(--mood-swings-primary-s, 0), 100);
-  --mood-swings-primary-container--sign: calc(-2 * clamp(0, var(--mood-swings-primary-l) - 30, 1) + 1);
-  --mood-swings-primary-container-l: calc(clamp(0, var(--mood-swings-primary-l, 0), 100) + 30 * var(--mood-swings-primary-container--sign));
-  --mood-swings-primary-container: hsl(var(--mood-swings-primary-container-h, 0), calc(clamp(0, var(--mood-swings-primary-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-primary-container-l, 0), 100) * 1%));
-  --mood-swings-on-primary-container-h: var(--mood-swings-primary-container-h, 0);
-  --mood-swings-on-primary-container-s: clamp(0, var(--mood-swings-primary-container-s, 0), 100);
-  --mood-swings-on-primary-container--sign: calc(-2 * clamp(0, var(--mood-swings-primary-container-l) - 50, 1) + 1);
-  --mood-swings-on-primary-container-l: calc(clamp(0, var(--mood-swings-primary-container-l, 0), 100) + 50 * var(--mood-swings-on-primary-container--sign));
-  --mood-swings-on-primary-container: hsl(var(--mood-swings-on-primary-container-h, 0), calc(clamp(0, var(--mood-swings-on-primary-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-primary-container-l, 0), 100) * 1%));
-  --mood-swings-secondary-h: calc(var(--mood-swings-mood--flag, 0) * calc(0.6 * var(--mood-swings-variant-h, 0) + (1 - 0.6) * var(--mood-swings-mood-h, 0)) + (1 - var(--mood-swings-mood--flag, 0)) * var(--mood-swings-variant-h, 0));
-  --mood-swings-secondary-s: clamp(0, var(--mood-swings-variant-s, 0), 100);
-  --mood-swings-secondary-l: calc(var(--mood-swings-mood--flag, 0) * calc(0.6 * clamp(0, var(--mood-swings-variant-l, 0), 100) + (1 - 0.6) * clamp(0, var(--mood-swings-mood-l, 0), 100)) + (1 - var(--mood-swings-mood--flag, 0)) * clamp(0, var(--mood-swings-variant-l, 0), 100));
-  --mood-swings-secondary: hsl(var(--mood-swings-secondary-h, 0), calc(clamp(0, var(--mood-swings-secondary-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-secondary-l, 0), 100) * 1%));
-  --mood-swings-on-secondary-h: var(--mood-swings-secondary-h, 0);
-  --mood-swings-on-secondary-s: clamp(0, var(--mood-swings-secondary-s, 0), 100);
-  --mood-swings-on-secondary--sign: calc(-2 * clamp(0, var(--mood-swings-secondary-l) - 50, 1) + 1);
-  --mood-swings-on-secondary-l: calc(clamp(0, var(--mood-swings-secondary-l, 0), 100) + 50 * var(--mood-swings-on-secondary--sign));
-  --mood-swings-on-secondary: hsl(var(--mood-swings-on-secondary-h, 0), calc(clamp(0, var(--mood-swings-on-secondary-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-secondary-l, 0), 100) * 1%));
-  --mood-swings-secondary-container-h: var(--mood-swings-secondary-h, 0);
-  --mood-swings-secondary-container-s: clamp(0, var(--mood-swings-secondary-s, 0), 100);
-  --mood-swings-secondary-container--sign: calc(-2 * clamp(0, var(--mood-swings-secondary-l) - 30, 1) + 1);
-  --mood-swings-secondary-container-l: calc(clamp(0, var(--mood-swings-secondary-l, 0), 100) + 30 * var(--mood-swings-secondary-container--sign));
-  --mood-swings-secondary-container: hsl(var(--mood-swings-secondary-container-h, 0), calc(clamp(0, var(--mood-swings-secondary-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-secondary-container-l, 0), 100) * 1%));
-  --mood-swings-on-secondary-container-h: var(--mood-swings-secondary-container-h, 0);
-  --mood-swings-on-secondary-container-s: clamp(0, var(--mood-swings-secondary-container-s, 0), 100);
-  --mood-swings-on-secondary-container--sign: calc(-2 * clamp(0, var(--mood-swings-secondary-container-l) - 50, 1) + 1);
-  --mood-swings-on-secondary-container-l: calc(clamp(0, var(--mood-swings-secondary-container-l, 0), 100) + 50 * var(--mood-swings-on-secondary-container--sign));
-  --mood-swings-on-secondary-container: hsl(var(--mood-swings-on-secondary-container-h, 0), calc(clamp(0, var(--mood-swings-on-secondary-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-secondary-container-l, 0), 100) * 1%));
-  --mood-swings-surface-h: var(--mood-swings-primary-h, 0);
-  --mood-swings-surface-s: 10;
-  --mood-swings-surface-l: clamp(0, var(--mood-swings-primary-l, 0), 100);
-  --mood-swings-surface: hsl(var(--mood-swings-surface-h, 0), calc(clamp(0, var(--mood-swings-surface-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-surface-l, 0), 100) * 1%));
-  --mood-swings-on-surface-h: var(--mood-swings-surface-h, 0);
-  --mood-swings-on-surface-s: clamp(0, var(--mood-swings-surface-s, 0), 100);
-  --mood-swings-on-surface--sign: calc(-2 * clamp(0, var(--mood-swings-surface-l) - 50, 1) + 1);
-  --mood-swings-on-surface-l: calc(clamp(0, var(--mood-swings-surface-l, 0), 100) + 50 * var(--mood-swings-on-surface--sign));
-  --mood-swings-on-surface: hsl(var(--mood-swings-on-surface-h, 0), calc(clamp(0, var(--mood-swings-on-surface-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-surface-l, 0), 100) * 1%));
-  --mood-swings-surface-container-h: var(--mood-swings-surface-h, 0);
-  --mood-swings-surface-container-s: clamp(0, var(--mood-swings-surface-s, 0), 100);
-  --mood-swings-surface-container--sign: calc(-2 * clamp(0, var(--mood-swings-surface-l) - 30, 1) + 1);
-  --mood-swings-surface-container-l: calc(clamp(0, var(--mood-swings-surface-l, 0), 100) + 30 * var(--mood-swings-surface-container--sign));
-  --mood-swings-surface-container: hsl(var(--mood-swings-surface-container-h, 0), calc(clamp(0, var(--mood-swings-surface-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-surface-container-l, 0), 100) * 1%));
-  --mood-swings-on-surface-container-h: var(--mood-swings-surface-container-h, 0);
-  --mood-swings-on-surface-container-s: clamp(0, var(--mood-swings-surface-container-s, 0), 100);
-  --mood-swings-on-surface-container--sign: calc(-2 * clamp(0, var(--mood-swings-surface-container-l) - 50, 1) + 1);
-  --mood-swings-on-surface-container-l: calc(clamp(0, var(--mood-swings-surface-container-l, 0), 100) + 50 * var(--mood-swings-on-surface-container--sign));
-  --mood-swings-on-surface-container: hsl(var(--mood-swings-on-surface-container-h, 0), calc(clamp(0, var(--mood-swings-on-surface-container-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-surface-container-l, 0), 100) * 1%));
+  --swings-accent-h: 280;
+  --swings-accent-s: 60;
+  --swings-accent-l: 30;
+  --swings-accent: hsl(var(--swings-accent-h, 0), calc(clamp(0, var(--swings-accent-s, 0), 100) * 1%), calc(clamp(0, var(--swings-accent-l, 0), 100) * 1%));
+  --swings-variant-h: 150;
+  --swings-variant-s: 60;
+  --swings-variant-l: 30;
+  --swings-variant: hsl(var(--swings-variant-h, 0), calc(clamp(0, var(--swings-variant-s, 0), 100) * 1%), calc(clamp(0, var(--swings-variant-l, 0), 100) * 1%));
+  --swings-mood-h: 0;
+  --swings-mood-s: 0;
+  --swings-mood-l: 0;
+  --swings-mood: hsl(var(--swings-mood-h, 0), calc(clamp(0, var(--swings-mood-s, 0), 100) * 1%), calc(clamp(0, var(--swings-mood-l, 0), 100) * 1%));
+  --swings-mood--flag: clamp(0, clamp(0, var(--swings-mood-s) - 0, 1) + clamp(0, var(--swings-mood-l) - 0, 1), 1);
+  --swings-error-h: 357;
+  --swings-error-s: 72;
+  --swings-error-l: 42;
+  --swings-error: hsl(var(--swings-error-h, 0), calc(clamp(0, var(--swings-error-s, 0), 100) * 1%), calc(clamp(0, var(--swings-error-l, 0), 100) * 1%));
+  --swings-on-error-h: var(--swings-error-h, 0);
+  --swings-on-error-s: clamp(0, var(--swings-error-s, 0), 100);
+  --swings-on-error--sign: calc(-2 * clamp(0, var(--swings-error-l) - 50, 1) + 1);
+  --swings-on-error-l: calc(clamp(0, var(--swings-error-l, 0), 100) + 50 * var(--swings-on-error--sign));
+  --swings-on-error: hsl(var(--swings-on-error-h, 0), calc(clamp(0, var(--swings-on-error-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-error-l, 0), 100) * 1%));
+  --swings-error-container-h: var(--swings-error-h, 0);
+  --swings-error-container-s: clamp(0, var(--swings-error-s, 0), 100);
+  --swings-error-container--sign: calc(-2 * clamp(0, var(--swings-error-l) - 30, 1) + 1);
+  --swings-error-container-l: calc(clamp(0, var(--swings-error-l, 0), 100) + 30 * var(--swings-error-container--sign));
+  --swings-error-container: hsl(var(--swings-error-container-h, 0), calc(clamp(0, var(--swings-error-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-error-container-l, 0), 100) * 1%));
+  --swings-on-error-container-h: var(--swings-error-container-h, 0);
+  --swings-on-error-container-s: clamp(0, var(--swings-error-container-s, 0), 100);
+  --swings-on-error-container--sign: calc(-2 * clamp(0, var(--swings-error-container-l) - 50, 1) + 1);
+  --swings-on-error-container-l: calc(clamp(0, var(--swings-error-container-l, 0), 100) + 50 * var(--swings-on-error-container--sign));
+  --swings-on-error-container: hsl(var(--swings-on-error-container-h, 0), calc(clamp(0, var(--swings-on-error-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-error-container-l, 0), 100) * 1%));
+  --swings-warning-h: 48;
+  --swings-warning-s: 72;
+  --swings-warning-l: 42;
+  --swings-warning: hsl(var(--swings-warning-h, 0), calc(clamp(0, var(--swings-warning-s, 0), 100) * 1%), calc(clamp(0, var(--swings-warning-l, 0), 100) * 1%));
+  --swings-on-warning-h: var(--swings-warning-h, 0);
+  --swings-on-warning-s: clamp(0, var(--swings-warning-s, 0), 100);
+  --swings-on-warning--sign: calc(-2 * clamp(0, var(--swings-warning-l) - 50, 1) + 1);
+  --swings-on-warning-l: calc(clamp(0, var(--swings-warning-l, 0), 100) + 50 * var(--swings-on-warning--sign));
+  --swings-on-warning: hsl(var(--swings-on-warning-h, 0), calc(clamp(0, var(--swings-on-warning-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-warning-l, 0), 100) * 1%));
+  --swings-warning-container-h: var(--swings-warning-h, 0);
+  --swings-warning-container-s: clamp(0, var(--swings-warning-s, 0), 100);
+  --swings-warning-container--sign: calc(-2 * clamp(0, var(--swings-warning-l) - 30, 1) + 1);
+  --swings-warning-container-l: calc(clamp(0, var(--swings-warning-l, 0), 100) + 30 * var(--swings-warning-container--sign));
+  --swings-warning-container: hsl(var(--swings-warning-container-h, 0), calc(clamp(0, var(--swings-warning-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-warning-container-l, 0), 100) * 1%));
+  --swings-on-warning-container-h: var(--swings-warning-container-h, 0);
+  --swings-on-warning-container-s: clamp(0, var(--swings-warning-container-s, 0), 100);
+  --swings-on-warning-container--sign: calc(-2 * clamp(0, var(--swings-warning-container-l) - 50, 1) + 1);
+  --swings-on-warning-container-l: calc(clamp(0, var(--swings-warning-container-l, 0), 100) + 50 * var(--swings-on-warning-container--sign));
+  --swings-on-warning-container: hsl(var(--swings-on-warning-container-h, 0), calc(clamp(0, var(--swings-on-warning-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-warning-container-l, 0), 100) * 1%));
+  --swings-success-h: 150;
+  --swings-success-s: 72;
+  --swings-success-l: 42;
+  --swings-success: hsl(var(--swings-success-h, 0), calc(clamp(0, var(--swings-success-s, 0), 100) * 1%), calc(clamp(0, var(--swings-success-l, 0), 100) * 1%));
+  --swings-on-success-h: var(--swings-success-h, 0);
+  --swings-on-success-s: clamp(0, var(--swings-success-s, 0), 100);
+  --swings-on-success--sign: calc(-2 * clamp(0, var(--swings-success-l) - 50, 1) + 1);
+  --swings-on-success-l: calc(clamp(0, var(--swings-success-l, 0), 100) + 50 * var(--swings-on-success--sign));
+  --swings-on-success: hsl(var(--swings-on-success-h, 0), calc(clamp(0, var(--swings-on-success-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-success-l, 0), 100) * 1%));
+  --swings-success-container-h: var(--swings-success-h, 0);
+  --swings-success-container-s: clamp(0, var(--swings-success-s, 0), 100);
+  --swings-success-container--sign: calc(-2 * clamp(0, var(--swings-success-l) - 30, 1) + 1);
+  --swings-success-container-l: calc(clamp(0, var(--swings-success-l, 0), 100) + 30 * var(--swings-success-container--sign));
+  --swings-success-container: hsl(var(--swings-success-container-h, 0), calc(clamp(0, var(--swings-success-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-success-container-l, 0), 100) * 1%));
+  --swings-on-success-container-h: var(--swings-success-container-h, 0);
+  --swings-on-success-container-s: clamp(0, var(--swings-success-container-s, 0), 100);
+  --swings-on-success-container--sign: calc(-2 * clamp(0, var(--swings-success-container-l) - 50, 1) + 1);
+  --swings-on-success-container-l: calc(clamp(0, var(--swings-success-container-l, 0), 100) + 50 * var(--swings-on-success-container--sign));
+  --swings-on-success-container: hsl(var(--swings-on-success-container-h, 0), calc(clamp(0, var(--swings-on-success-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-success-container-l, 0), 100) * 1%));
+  --swings-primary-h: calc(var(--swings-mood--flag, 0) * calc(0.1 * var(--swings-accent-h, 0) + (1 - 0.1) * var(--swings-mood-h, 0)) + (1 - var(--swings-mood--flag, 0)) * var(--swings-accent-h, 0));
+  --swings-primary-s: calc(var(--swings-mood--flag, 0) * calc(0.1 * clamp(0, var(--swings-accent-s, 0), 100) + (1 - 0.1) * clamp(0, var(--swings-mood-s, 0), 100)) + (1 - var(--swings-mood--flag, 0)) * clamp(0, var(--swings-accent-s, 0), 100));
+  --swings-primary-l: calc(var(--swings-mood--flag, 0) * calc(0.1 * clamp(0, var(--swings-accent-l, 0), 100) + (1 - 0.1) * clamp(0, var(--swings-mood-l, 0), 100)) + (1 - var(--swings-mood--flag, 0)) * clamp(0, var(--swings-accent-l, 0), 100));
+  --swings-primary: hsl(var(--swings-primary-h, 0), calc(clamp(0, var(--swings-primary-s, 0), 100) * 1%), calc(clamp(0, var(--swings-primary-l, 0), 100) * 1%));
+  --swings-on-primary-h: var(--swings-primary-h, 0);
+  --swings-on-primary-s: clamp(0, var(--swings-primary-s, 0), 100);
+  --swings-on-primary--sign: calc(-2 * clamp(0, var(--swings-primary-l) - 50, 1) + 1);
+  --swings-on-primary-l: calc(clamp(0, var(--swings-primary-l, 0), 100) + 50 * var(--swings-on-primary--sign));
+  --swings-on-primary: hsl(var(--swings-on-primary-h, 0), calc(clamp(0, var(--swings-on-primary-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-primary-l, 0), 100) * 1%));
+  --swings-primary-container-h: var(--swings-primary-h, 0);
+  --swings-primary-container-s: clamp(0, var(--swings-primary-s, 0), 100);
+  --swings-primary-container--sign: calc(-2 * clamp(0, var(--swings-primary-l) - 30, 1) + 1);
+  --swings-primary-container-l: calc(clamp(0, var(--swings-primary-l, 0), 100) + 30 * var(--swings-primary-container--sign));
+  --swings-primary-container: hsl(var(--swings-primary-container-h, 0), calc(clamp(0, var(--swings-primary-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-primary-container-l, 0), 100) * 1%));
+  --swings-on-primary-container-h: var(--swings-primary-container-h, 0);
+  --swings-on-primary-container-s: clamp(0, var(--swings-primary-container-s, 0), 100);
+  --swings-on-primary-container--sign: calc(-2 * clamp(0, var(--swings-primary-container-l) - 50, 1) + 1);
+  --swings-on-primary-container-l: calc(clamp(0, var(--swings-primary-container-l, 0), 100) + 50 * var(--swings-on-primary-container--sign));
+  --swings-on-primary-container: hsl(var(--swings-on-primary-container-h, 0), calc(clamp(0, var(--swings-on-primary-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-primary-container-l, 0), 100) * 1%));
+  --swings-secondary-h: calc(var(--swings-mood--flag, 0) * calc(0.6 * var(--swings-variant-h, 0) + (1 - 0.6) * var(--swings-mood-h, 0)) + (1 - var(--swings-mood--flag, 0)) * var(--swings-variant-h, 0));
+  --swings-secondary-s: clamp(0, var(--swings-variant-s, 0), 100);
+  --swings-secondary-l: calc(var(--swings-mood--flag, 0) * calc(0.6 * clamp(0, var(--swings-variant-l, 0), 100) + (1 - 0.6) * clamp(0, var(--swings-mood-l, 0), 100)) + (1 - var(--swings-mood--flag, 0)) * clamp(0, var(--swings-variant-l, 0), 100));
+  --swings-secondary: hsl(var(--swings-secondary-h, 0), calc(clamp(0, var(--swings-secondary-s, 0), 100) * 1%), calc(clamp(0, var(--swings-secondary-l, 0), 100) * 1%));
+  --swings-on-secondary-h: var(--swings-secondary-h, 0);
+  --swings-on-secondary-s: clamp(0, var(--swings-secondary-s, 0), 100);
+  --swings-on-secondary--sign: calc(-2 * clamp(0, var(--swings-secondary-l) - 50, 1) + 1);
+  --swings-on-secondary-l: calc(clamp(0, var(--swings-secondary-l, 0), 100) + 50 * var(--swings-on-secondary--sign));
+  --swings-on-secondary: hsl(var(--swings-on-secondary-h, 0), calc(clamp(0, var(--swings-on-secondary-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-secondary-l, 0), 100) * 1%));
+  --swings-secondary-container-h: var(--swings-secondary-h, 0);
+  --swings-secondary-container-s: clamp(0, var(--swings-secondary-s, 0), 100);
+  --swings-secondary-container--sign: calc(-2 * clamp(0, var(--swings-secondary-l) - 30, 1) + 1);
+  --swings-secondary-container-l: calc(clamp(0, var(--swings-secondary-l, 0), 100) + 30 * var(--swings-secondary-container--sign));
+  --swings-secondary-container: hsl(var(--swings-secondary-container-h, 0), calc(clamp(0, var(--swings-secondary-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-secondary-container-l, 0), 100) * 1%));
+  --swings-on-secondary-container-h: var(--swings-secondary-container-h, 0);
+  --swings-on-secondary-container-s: clamp(0, var(--swings-secondary-container-s, 0), 100);
+  --swings-on-secondary-container--sign: calc(-2 * clamp(0, var(--swings-secondary-container-l) - 50, 1) + 1);
+  --swings-on-secondary-container-l: calc(clamp(0, var(--swings-secondary-container-l, 0), 100) + 50 * var(--swings-on-secondary-container--sign));
+  --swings-on-secondary-container: hsl(var(--swings-on-secondary-container-h, 0), calc(clamp(0, var(--swings-on-secondary-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-secondary-container-l, 0), 100) * 1%));
+  --swings-surface-h: var(--swings-primary-h, 0);
+  --swings-surface-s: 10;
+  --swings-surface-l: clamp(0, var(--swings-primary-l, 0), 100);
+  --swings-surface: hsl(var(--swings-surface-h, 0), calc(clamp(0, var(--swings-surface-s, 0), 100) * 1%), calc(clamp(0, var(--swings-surface-l, 0), 100) * 1%));
+  --swings-on-surface-h: var(--swings-surface-h, 0);
+  --swings-on-surface-s: clamp(0, var(--swings-surface-s, 0), 100);
+  --swings-on-surface--sign: calc(-2 * clamp(0, var(--swings-surface-l) - 50, 1) + 1);
+  --swings-on-surface-l: calc(clamp(0, var(--swings-surface-l, 0), 100) + 50 * var(--swings-on-surface--sign));
+  --swings-on-surface: hsl(var(--swings-on-surface-h, 0), calc(clamp(0, var(--swings-on-surface-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-surface-l, 0), 100) * 1%));
+  --swings-surface-container-h: var(--swings-surface-h, 0);
+  --swings-surface-container-s: clamp(0, var(--swings-surface-s, 0), 100);
+  --swings-surface-container--sign: calc(-2 * clamp(0, var(--swings-surface-l) - 30, 1) + 1);
+  --swings-surface-container-l: calc(clamp(0, var(--swings-surface-l, 0), 100) + 30 * var(--swings-surface-container--sign));
+  --swings-surface-container: hsl(var(--swings-surface-container-h, 0), calc(clamp(0, var(--swings-surface-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-surface-container-l, 0), 100) * 1%));
+  --swings-on-surface-container-h: var(--swings-surface-container-h, 0);
+  --swings-on-surface-container-s: clamp(0, var(--swings-surface-container-s, 0), 100);
+  --swings-on-surface-container--sign: calc(-2 * clamp(0, var(--swings-surface-container-l) - 50, 1) + 1);
+  --swings-on-surface-container-l: calc(clamp(0, var(--swings-surface-container-l, 0), 100) + 50 * var(--swings-on-surface-container--sign));
+  --swings-on-surface-container: hsl(var(--swings-on-surface-container-h, 0), calc(clamp(0, var(--swings-on-surface-container-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-surface-container-l, 0), 100) * 1%));
   font-size: calc(6px + 0.6em);
 }
 
@@ -142,28 +142,25 @@ body {
   grid-template-columns: repeat(5, minmax(6em, 1fr));
   gap: 1em 2em;
   align-content: center;
-  background-color: var(--mood-swings-surface);
+  background-color: var(--swings-surface);
 }
-
-div {
+body div {
   aspect-ratio: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: 0.3em solid var(--mood-swings-on-surface);
+  border: 0.3em solid var(--swings-on-surface);
   border-radius: 1em;
 }
 
 .editable {
   position: relative;
 }
-
-span {
+.editable span {
   position: absolute;
 }
-
-input[type=color] {
+.editable input[type=color] {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -173,153 +170,153 @@ input[type=color] {
 }
 
 .accent {
-  --mood-swings-on-accent-h: var(--mood-swings-accent-h, 0);
-  --mood-swings-on-accent-s: clamp(0, var(--mood-swings-accent-s, 0), 100);
-  --mood-swings-on-accent--sign: calc(-2 * clamp(0, var(--mood-swings-accent-l) - 50, 1) + 1);
-  --mood-swings-on-accent-l: calc(clamp(0, var(--mood-swings-accent-l, 0), 100) + 50 * var(--mood-swings-on-accent--sign));
-  --mood-swings-on-accent: hsl(var(--mood-swings-on-accent-h, 0), calc(clamp(0, var(--mood-swings-on-accent-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-accent-l, 0), 100) * 1%));
-  background-color: var(--mood-swings-accent);
-  color: var(--mood-swings-on-accent);
+  --swings-on-accent-h: var(--swings-accent-h, 0);
+  --swings-on-accent-s: clamp(0, var(--swings-accent-s, 0), 100);
+  --swings-on-accent--sign: calc(-2 * clamp(0, var(--swings-accent-l) - 50, 1) + 1);
+  --swings-on-accent-l: calc(clamp(0, var(--swings-accent-l, 0), 100) + 50 * var(--swings-on-accent--sign));
+  --swings-on-accent: hsl(var(--swings-on-accent-h, 0), calc(clamp(0, var(--swings-on-accent-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-accent-l, 0), 100) * 1%));
+  background-color: var(--swings-accent);
+  color: var(--swings-on-accent);
 }
 
 .variant {
-  --mood-swings-on-variant-h: var(--mood-swings-variant-h, 0);
-  --mood-swings-on-variant-s: clamp(0, var(--mood-swings-variant-s, 0), 100);
-  --mood-swings-on-variant--sign: calc(-2 * clamp(0, var(--mood-swings-variant-l) - 50, 1) + 1);
-  --mood-swings-on-variant-l: calc(clamp(0, var(--mood-swings-variant-l, 0), 100) + 50 * var(--mood-swings-on-variant--sign));
-  --mood-swings-on-variant: hsl(var(--mood-swings-on-variant-h, 0), calc(clamp(0, var(--mood-swings-on-variant-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-variant-l, 0), 100) * 1%));
-  background-color: var(--mood-swings-variant);
-  color: var(--mood-swings-on-variant);
+  --swings-on-variant-h: var(--swings-variant-h, 0);
+  --swings-on-variant-s: clamp(0, var(--swings-variant-s, 0), 100);
+  --swings-on-variant--sign: calc(-2 * clamp(0, var(--swings-variant-l) - 50, 1) + 1);
+  --swings-on-variant-l: calc(clamp(0, var(--swings-variant-l, 0), 100) + 50 * var(--swings-on-variant--sign));
+  --swings-on-variant: hsl(var(--swings-on-variant-h, 0), calc(clamp(0, var(--swings-on-variant-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-variant-l, 0), 100) * 1%));
+  background-color: var(--swings-variant);
+  color: var(--swings-on-variant);
 }
 
 .mood {
   aspect-ratio: unset;
   grid-row: span 4;
-  --mood-swings-on-mood-h: var(--mood-swings-mood-h, 0);
-  --mood-swings-on-mood-s: clamp(0, var(--mood-swings-mood-s, 0), 100);
-  --mood-swings-on-mood--sign: calc(-2 * clamp(0, var(--mood-swings-mood-l) - 50, 1) + 1);
-  --mood-swings-on-mood-l: calc(clamp(0, var(--mood-swings-mood-l, 0), 100) + 50 * var(--mood-swings-on-mood--sign));
-  --mood-swings-on-mood: hsl(var(--mood-swings-on-mood-h, 0), calc(clamp(0, var(--mood-swings-on-mood-s, 0), 100) * 1%), calc(clamp(0, var(--mood-swings-on-mood-l, 0), 100) * 1%));
-  background-color: var(--mood-swings-mood);
-  color: var(--mood-swings-on-mood);
+  --swings-on-mood-h: var(--swings-mood-h, 0);
+  --swings-on-mood-s: clamp(0, var(--swings-mood-s, 0), 100);
+  --swings-on-mood--sign: calc(-2 * clamp(0, var(--swings-mood-l) - 50, 1) + 1);
+  --swings-on-mood-l: calc(clamp(0, var(--swings-mood-l, 0), 100) + 50 * var(--swings-on-mood--sign));
+  --swings-on-mood: hsl(var(--swings-on-mood-h, 0), calc(clamp(0, var(--swings-on-mood-s, 0), 100) * 1%), calc(clamp(0, var(--swings-on-mood-l, 0), 100) * 1%));
+  background-color: var(--swings-mood);
+  color: var(--swings-on-mood);
 }
 
 .primary {
-  background-color: var(--mood-swings-primary);
-  color: var(--mood-swings-on-primary);
+  background-color: var(--swings-primary);
+  color: var(--swings-on-primary);
 }
 
 .on-primary {
-  background-color: var(--mood-swings-on-primary);
-  color: var(--mood-swings-primary);
+  background-color: var(--swings-on-primary);
+  color: var(--swings-primary);
 }
 
 .primary-container {
-  background-color: var(--mood-swings-primary-container);
-  color: var(--mood-swings-on-primary-container);
+  background-color: var(--swings-primary-container);
+  color: var(--swings-on-primary-container);
 }
 
 .on-primary-container {
-  background-color: var(--mood-swings-on-primary-container);
-  color: var(--mood-swings-primary-container);
+  background-color: var(--swings-on-primary-container);
+  color: var(--swings-primary-container);
 }
 
 .secondary {
-  background-color: var(--mood-swings-secondary);
-  color: var(--mood-swings-on-secondary);
+  background-color: var(--swings-secondary);
+  color: var(--swings-on-secondary);
 }
 
 .on-secondary {
-  background-color: var(--mood-swings-on-secondary);
-  color: var(--mood-swings-secondary);
+  background-color: var(--swings-on-secondary);
+  color: var(--swings-secondary);
 }
 
 .secondary-container {
-  background-color: var(--mood-swings-secondary-container);
-  color: var(--mood-swings-on-secondary-container);
+  background-color: var(--swings-secondary-container);
+  color: var(--swings-on-secondary-container);
 }
 
 .on-secondary-container {
-  background-color: var(--mood-swings-on-secondary-container);
-  color: var(--mood-swings-secondary-container);
+  background-color: var(--swings-on-secondary-container);
+  color: var(--swings-secondary-container);
 }
 
 .surface {
-  background-color: var(--mood-swings-surface);
-  color: var(--mood-swings-on-surface);
+  background-color: var(--swings-surface);
+  color: var(--swings-on-surface);
 }
 
 .on-surface {
-  background-color: var(--mood-swings-on-surface);
-  color: var(--mood-swings-surface);
+  background-color: var(--swings-on-surface);
+  color: var(--swings-surface);
 }
 
 .surface-container {
-  background-color: var(--mood-swings-surface-container);
-  color: var(--mood-swings-on-surface-container);
+  background-color: var(--swings-surface-container);
+  color: var(--swings-on-surface-container);
 }
 
 .on-surface-container {
-  background-color: var(--mood-swings-on-surface-container);
-  color: var(--mood-swings-surface-container);
+  background-color: var(--swings-on-surface-container);
+  color: var(--swings-surface-container);
 }
 
 .error {
-  background-color: var(--mood-swings-error);
-  color: var(--mood-swings-on-error);
+  background-color: var(--swings-error);
+  color: var(--swings-on-error);
 }
 
 .on-error {
-  background-color: var(--mood-swings-on-error);
-  color: var(--mood-swings-error);
+  background-color: var(--swings-on-error);
+  color: var(--swings-error);
 }
 
 .error-container {
-  background-color: var(--mood-swings-error-container);
-  color: var(--mood-swings-on-error-container);
+  background-color: var(--swings-error-container);
+  color: var(--swings-on-error-container);
 }
 
 .on-error-container {
-  background-color: var(--mood-swings-on-error-container);
-  color: var(--mood-swings-error-container);
+  background-color: var(--swings-on-error-container);
+  color: var(--swings-error-container);
 }
 
 .warning {
-  background-color: var(--mood-swings-warning);
-  color: var(--mood-swings-on-warning);
+  background-color: var(--swings-warning);
+  color: var(--swings-on-warning);
 }
 
 .on-warning {
-  background-color: var(--mood-swings-on-warning);
-  color: var(--mood-swings-warning);
+  background-color: var(--swings-on-warning);
+  color: var(--swings-warning);
 }
 
 .warning-container {
-  background-color: var(--mood-swings-warning-container);
-  color: var(--mood-swings-on-warning-container);
+  background-color: var(--swings-warning-container);
+  color: var(--swings-on-warning-container);
 }
 
 .on-warning-container {
-  background-color: var(--mood-swings-on-warning-container);
-  color: var(--mood-swings-warning-container);
+  background-color: var(--swings-on-warning-container);
+  color: var(--swings-warning-container);
 }
 
 .success {
-  background-color: var(--mood-swings-success);
-  color: var(--mood-swings-on-success);
+  background-color: var(--swings-success);
+  color: var(--swings-on-success);
 }
 
 .on-success {
-  background-color: var(--mood-swings-on-success);
-  color: var(--mood-swings-success);
+  background-color: var(--swings-on-success);
+  color: var(--swings-success);
 }
 
 .success-container {
-  background-color: var(--mood-swings-success-container);
-  color: var(--mood-swings-on-success-container);
+  background-color: var(--swings-success-container);
+  color: var(--swings-on-success-container);
 }
 
 .on-success-container {
-  background-color: var(--mood-swings-on-success-container);
-  color: var(--mood-swings-success-container);
+  background-color: var(--swings-on-success-container);
+  color: var(--swings-success-container);
 }

@@ -43,7 +43,7 @@ function swing(elem) {
     let hex = elem.value;
     ({ h, s, l } = hex2hsl(hex));
 
-    let prefix = '--mood-swings-' + elem.name;
+    let prefix = '--swings-' + elem.name;
     document.documentElement.style.setProperty(`${prefix}-h`, h);
     document.documentElement.style.setProperty(`${prefix}-s`, s);
     document.documentElement.style.setProperty(`${prefix}-l`, l);
@@ -63,9 +63,9 @@ function hslToHex(h, s, l) {
 // On load, set the initial values
 window.addEventListener('load', () => {
     document.querySelectorAll('input').forEach((elem) => {
-        let prefix = '--mood-swings-' + elem.name;
+        let prefix = '--swings-' + elem.name;
 
-        // read --mood-swings-{elem.name}-h
+        // read --swings-{elem.name}-h
         let h = getComputedStyle(document.documentElement).getPropertyValue(`${prefix}-h`);
         let s = getComputedStyle(document.documentElement).getPropertyValue(`${prefix}-s`);
         let l = getComputedStyle(document.documentElement).getPropertyValue(`${prefix}-l`);

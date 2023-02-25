@@ -1,8 +1,9 @@
-@use 'tokens' with ($prefix: 'mood-swings'
+@use 'tokens' with (
+    $prefix: 'swings'
 );
 
 @use 'src' as swings;
-@use 'api';
+@use 'api' as swings-api;
 
 :root {
     @include swings.presets;
@@ -23,44 +24,44 @@ body {
     gap: 1em 2em;
     align-content: center;
     background-color: swings.runtime(surface);
-}
 
-div {
-    aspect-ratio: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border: 0.3em solid swings.runtime(on-surface);
-    border-radius: 1em;
+    div {
+        aspect-ratio: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border: 0.3em solid swings.runtime(on-surface);
+        border-radius: 1em;
+    }
 }
 
 .editable {
     position: relative;
-}
 
-span {
-    position: absolute;
-}
+    span {
+        position: absolute;
+    }
 
-input[type="color"] {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: transparent;
-    outline: none;
+    input[type='color'] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+        outline: none;
+    }
 }
 
 .accent {
-    @include api.inject-on(accent);
+    @include swings-api.inject-on(accent);
 
     background-color: swings.runtime(accent);
     color: swings.runtime(on-accent);
 }
 
 .variant {
-    @include api.inject-on(variant);
+    @include swings-api.inject-on(variant);
 
     background-color: swings.runtime(variant);
     color: swings.runtime(on-variant);
@@ -70,7 +71,7 @@ input[type="color"] {
     aspect-ratio: unset;
     grid-row: span 4;
 
-    @include api.inject-on(mood);
+    @include swings-api.inject-on(mood);
 
     background-color: swings.runtime(mood);
     color: swings.runtime(on-mood);

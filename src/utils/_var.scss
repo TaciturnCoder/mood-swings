@@ -1,4 +1,4 @@
-@use 'tokens';
+@use '../../tokens';
 
 ////
 /// @access public
@@ -6,20 +6,18 @@
 ////
 
 /// Returns var notation for a CSS custom property.
-/// This value is evaluated at runtime.
-/// And can be used for user defined inputs.
 /// @param {string} prop
 ///     CSS custom property to retrive
 /// @param {string} prefix [tokens.$prefix]
-///     Prefix to be applied to the property.
-///     Set to false or null to exclude prefix
+///     Prefix to be applied to the property. \
+///     Set to false or null to exclude prefix.
 /// @param {*} fallback [null]
-///     Fallback value to return if property is not defined.
-///     If not provided, returns var() without fallback
+///     Fallback value to use if property is not defined. \
+///     If not provided, returns var() without fallback.
+/// @return {string}
+///     var notation for the CSS custom property
 /// @requires {variable} tokens.$prefix
 ///     <./tokens/#tokens-variable-prefix>
-/// @return {*}
-///     var notation for the CSS custom property
 @function runtime($prop, $prefix: tokens.$prefix, $fallback: null) {
     $-prop: $prop;
 
@@ -29,31 +27,24 @@
 
     @if $fallback {
         @return var(--#{$-prop}, $fallback);
-    }
-
-    @else {
+    } @else {
         @return var(--#{$-prop});
     }
 }
 
-/// Inject a map of CSS custom properties into the CSS scope.
-/// This properties are available at runtime.
+/// Inject a map of key-value pairs as CSS custom properties into the CSS scope.
 /// @param {map} vars
 ///     Key-value pairs to inject
 /// @param {string} prefix [tokens.$prefix]
-///     Prefix to be applied to the property.
-///     Set to false or null to exclude prefix
+///     Prefix to be applied to the property. \
+///     Set to false or null to exclude prefix.
 /// @requires {variable} tokens.$prefix
 ///     <./tokens/#tokens-variable-prefix>
 @mixin inject($vars, $prefix: tokens.$prefix) {
-
-    @each $prop,
-    $value in $vars {
+    @each $prop, $value in $vars {
         @if $prefix {
             --#{$prefix}-#{$prop}: #{$value};
-        }
-
-        @else {
+        } @else {
             --#{$prop}: #{$value};
         }
     }

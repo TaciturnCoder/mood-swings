@@ -1,5 +1,5 @@
-@use 'src/utils';
-@use 'tokens';
+@use '../tokens';
+@use '../src/utils';
 @use './var';
 
 ////
@@ -7,10 +7,9 @@
 /// @group api
 ////
 
-/// Injects a mood-flag CSS custom property into the css scope.
-/// If mood-flag is 0, the mood color does not blend with the base colors.
+/// Injects a mood-flag CSS custom property into the CSS scope. \
+/// If mood-flag is 0, the mood color does not blend with the base colors. \
 /// If mood-flag is 1, the mood color blends with the base colors.
-/// This property is available at runtime.
 /// @example scss
 ///     // Given that the following CSS custom properties are defined:
 ///     // --mood-h: 0;
@@ -19,16 +18,20 @@
 ///     @include mood-flag;
 ///
 ///     // results into
-///     --mood--flag: clamp(0, (...) + (...), 1);
+///     --mood--flag: clamp(...);
 /// @requires {mixin} utils.inject
 ///     <../#utils-mixin-inject>
 /// @requires {function} utils.hardlimit
 ///     <../#utils-function-hardlimit>
 @mixin mood-flag {
-    @include utils.inject((mood--flag: clamp(0, utils.hardlimit(mood-s) + utils.hardlimit(mood-l), 1)));
+    @include utils.inject(
+        (
+            mood--flag: clamp(0, utils.hardlimit(mood-s) + utils.hardlimit(mood-l), 1),
+        )
+    );
 }
 
-/// Blends a base color with the mood color
+/// Blends a base color with the mood color. \
 /// This property works at runtime.
 /// @example scss
 ///     // Given that the following CSS custom properties are defined:
@@ -54,19 +57,19 @@
 ///     Sub-property of the color to be blended.
 /// @param {number} ratio [tokens.$blend-ratio]
 ///     Base color to mood blend ratio.
-/// @return {*}
+/// @return {string}
 ///     Value of the custom property
+/// @requires {function} runtime
 /// @requires {function} utils.blend
 ///     <../#utils-function-blend>
 /// @requires {function} utils.runtime
 ///     <../#utils-function-runtime>
 /// @requires {variable} tokens.$blend-ratio
 ///     <../tokens/#tokens-variable-blend-ratio>
-/// @requires {function} runtime
 @function blend-mood($name, $prop, $ratio: tokens.$blend-ratio) {
-    @return utils.blend(utils.runtime(mood--flag, $fallback: 0),
-        utils.blend($ratio,
-            var.runtime($name, $prop),
-            var.runtime(mood, $prop)),
-        var.runtime($name, $prop));
+    @return utils.blend(
+        utils.runtime(mood--flag, $fallback: 0),
+        utils.blend($ratio, var.runtime($name, $prop), var.runtime(mood, $prop)),
+        var.runtime($name, $prop)
+    );
 }
