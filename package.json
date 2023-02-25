@@ -1,16 +1,16 @@
 {
     "name": "@dwijbavisi/mood-swings",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "description": "🎨 Color scheme that adapts to your mood",
     "main": "_index.scss",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "demo": "./spec/scripts/demo.sh",
-        "build-demo": "./spec/scripts/build-demo.sh",
-        "build-doc": "./spec/scripts/build-doc.sh",
-        "doc-src": "./spec/scripts/doc-src.sh",
-        "doc-api": "./spec/scripts/doc-api.sh",
-        "doc-tokens": "./spec/scripts/doc-tokens.sh",
+        "demo": "bash spec/scripts/demo.sh",
+        "build-demo": "bash spec/scripts/build-demo.sh",
+        "build-doc": "bash spec/scripts/build-doc.sh",
+        "doc-src": "bash spec/scripts/doc-src.sh",
+        "doc-api": "bash spec/scripts/doc-api.sh",
+        "doc-tokens": "bash spec/scripts/doc-tokens.sh",
         "stylelint": "npx stylelint **/*.scss"
     },
     "repository": {

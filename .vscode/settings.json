@@ -16,5 +16,6 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "liveServer.settings.NoBrowser": true
+    "liveServer.settings.NoBrowser": true,
+    "scssFormatter.singleQuote": true,
 }

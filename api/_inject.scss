@@ -1,5 +1,5 @@
-@use 'src/utils';
-@use 'tokens';
+@use '../tokens';
+@use '../src/utils';
 @use './var';
 
 ////
@@ -8,7 +8,6 @@
 ////
 
 /// Inject a color CSS custom property into the CSS scope.
-/// This property is available at runtime.
 /// @example scss
 ///     // Given that the following CSS custom properties are defined:
 ///     // --my-color-h: 0;
@@ -20,15 +19,18 @@
 ///     --my-color: hsl(var(--my-color-h) var(--my-color-s) var(--my-color-l));
 /// @param {string} name
 ///     CSS custom property name for color
+/// @requires {function} runtime
 /// @requires {mixin} utils.inject
 ///     <../#utils-mixin-inject>
-/// @requires {function} runtime
 @mixin inject-color($name) {
-    @include utils.inject((#{$name}: hsl(var.runtime($name, h) calc(var.runtime($name, s) * 1%) calc(var.runtime($name, l) * 1%))));
+    $-h: var.runtime($name, h);
+    $-s: calc(var.runtime($name, s) * 1%);
+    $-l: calc(var.runtime($name, l) * 1%);
+
+    @include utils.inject((#{$name}: hsl($-h $-s $-l)));
 }
 
 /// Inject a color CSS custom property into the CSS scope.
-/// This property is available at runtime.
 /// @example scss
 ///     // Following:
 ///     @include inject-hsl('my-color', 0, 100, 50);
@@ -46,19 +48,15 @@
 ///     Saturation. Should be between 0 and 100
 /// @param {number} l
 ///     Lightness. Should be between 0 and 100
+/// @requires {mixin} inject-color
 /// @requires {mixin} utils.inject
 ///     <../#utils-mixin-inject>
-/// @requires {mixin} inject-color
 @mixin inject-hsl($name, $h, $s, $l) {
-    @include utils.inject((#{$name}-h: $h,
-            #{$name}-s: $s,
-            #{$name}-l: $l ));
-
+    @include utils.inject((#{$name}-h: $h, #{$name}-s: $s, #{$name}-l: $l));
     @include inject-color($name);
 }
 
-/// Inject an on-color (text color) CSS custom property into the css scope.
-/// This property is available at runtime.
+/// Inject an on-color (text color) CSS custom property into the CSS scope.
 /// @example scss
 ///     // Given that the following CSS custom properties are defined:
 ///     // --my-color-h: 0;
@@ -75,8 +73,10 @@
 /// @param {string} name
 ///     CSS custom property name for color
 /// @param {number} shift [tokens.$on-shift]
-///     Background to text lightness contrast.
+///     Background to text lightness contrast. \
 ///     Should be between 0 to 50.
+/// @requires {function} runtime
+/// @requires {mixin} inject-color
 /// @requires {mixin} utils.inject
 ///     <../#utils-mixin-inject>
 /// @requires {function} utils.hardlimit
@@ -85,19 +85,20 @@
 ///     <../#utils-function-runtime>
 /// @requires {variable} tokens.$on-shift
 ///     <../tokens/#tokens-variable-on-shift>
-/// @requires {function} runtime
-/// @requires {mixin} inject-color
 @mixin inject-on($name, $shift: tokens.$on-shift) {
-    @include utils.inject((on-#{$name}-h: var.runtime($name, h),
+    @include utils.inject(
+        (
+            on-#{$name}-h: var.runtime($name, h),
             on-#{$name}-s: var.runtime($name, s),
+            // sign = +1 if l <= 100 - shift, -1 if l > 100 - shift
             on-#{$name}--sign: calc(-2 * utils.hardlimit(#{$name}-l, 100 - $shift) + 1),
-            on-#{$name}-l: calc(var.runtime($name, l) + $shift * utils.runtime(on-#{$name}--sign))));
-
+            on-#{$name}-l: calc(var.runtime($name, l) + $shift * utils.runtime(on-#{$name}--sign))
+        )
+    );
     @include inject-color(on-#{$name});
 }
 
-/// Injects a container color CSS custom property into the css scope.
-/// This property is available at runtime.
+/// Injects a container color CSS custom property into the CSS scope.
 /// @example scss
 ///     // Given that the following CSS custom properties are defined:
 ///     // --my-color-h: 0;
@@ -114,8 +115,10 @@
 /// @param {string} name
 ///     CSS custom property name for color
 /// @param {number} shift [tokens.$container-shift]
-///     Background to container lightness contrast.
+///     Background to container lightness contrast. \
 ///     Should be between 0 to 50.
+/// @requires {function} runtime
+/// @requires {mixin} inject-color
 /// @requires {mixin} utils.inject
 ///     <../#utils-mixin-inject>
 /// @requires {function} utils.hardlimit
@@ -124,23 +127,24 @@
 ///     <../#utils-function-runtime>
 /// @requires {variable} tokens.$container-shift
 ///     <../tokens/#tokens-variable-container-shift>
-/// @requires {function} runtime
-/// @requires {mixin} inject-color
 @mixin inject-container($name, $shift: tokens.$container-shift) {
-    @include utils.inject((#{$name}-container-h: var.runtime($name, h),
+    @include utils.inject(
+        (
+            #{$name}-container-h: var.runtime($name, h),
             #{$name}-container-s: var.runtime($name, s),
+            // sign = +1 if l <= shift, -1 if l > shift
             #{$name}-container--sign: calc(-2 * utils.hardlimit(#{$name}-l, $shift) + 1),
-            #{$name}-container-l: calc(var.runtime($name, l) + $shift * utils.runtime(#{$name}-container--sign))));
-
+            #{$name}-container-l: calc(var.runtime($name, l) + $shift * utils.runtime(#{$name}-container--sign))
+        )
+    );
     @include inject-color(#{$name}-container);
 }
 
-/// Injects following CSS custom properties into the css scope.
-///     + color
-///     + on-color
-///     + container-color
-///     + on-container-color
-/// This property is available at runtime.
+/// Injects following CSS custom properties into the CSS scope.
+///  - color
+///  - on-color
+///  - container-color
+///  - on-container-color
 /// @example scss
 ///     // Given the following:
 ///     @include inject('my-color', 0, 100, 50);

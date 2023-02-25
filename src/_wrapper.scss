@@ -1,18 +1,17 @@
+@use '../tokens';
+@use '../api';
 @use './utils';
-@use 'tokens';
-@use 'api';
 
 ////
 /// @access public
-/// @group wrapper
+/// @group Wrapper
 ////
 
 /// Injects following CSS custom properties into the css scope.
-///     + color
-///     + on-color
-///     + container-color
-///     + on-container-color
-/// This property is available at runtime.
+///  - color
+///  - on-color
+///  - container-color
+///  - on-container-color
 /// @example scss
 ///     @use '@dwijbavisi/mood-swings';
 ///     :root {
@@ -21,21 +20,21 @@
 /// @param {string} name
 ///     CSS custom property name for color
 /// @param {color} color
-///     Value of the color.
+///     Value of the color. \
 ///     Can be any valid CSS color.
+/// @requires {function} abstract
 /// @requires {mixin} api.inject
 ///     <./api/#api-mixin-inject>
-/// @requires {function} abstract
 @mixin new($name, $color) {
-    @include api.inject($name,
+    @include api.inject(
+        $name,
         utils.abstract(hue($color)),
         utils.abstract(saturation($color)),
-        utils.abstract(lightness($color)));
+        utils.abstract(lightness($color))
+    );
 }
 
 /// Returns var notation for a CSS custom property.
-/// This value is evaluated at runtime.
-/// And can be used for user defined inputs.
 /// @example scss
 ///     @use '@dwijbavisi/mood-swings';
 ///     :root {
@@ -51,8 +50,8 @@
 ///         @include mood-swings.new('notify', orange);
 ///     }
 ///     .cookies {
-///         background-color: mood-swings.runtime('notify');
-///         color: mood-swings.runtime('on-notify');
+///         background-color: mood-swings.runtime('notify-container');
+///         color: mood-swings.runtime('on-notify-container');
 ///     }
 /// @param {string} name
 ///     CSS custom property name for color
@@ -86,6 +85,9 @@
 ///     Warning color for the color scheme
 /// @param {color} success [tokens.$success]
 ///     Success color for the color scheme
+/// @requires {mixin} new
+/// @requires {function} abstract
+/// @requires {function} runtime
 /// @requires {mixin} api.inject-hsl
 ///     <./api/#api-mixin-inject-hsl>
 /// @requires {mixin} api.inject
@@ -110,47 +112,42 @@
 ///     <./tokens/#tokens-variable-success>
 /// @requires {variable} tokens.$abstract
 ///     <./tokens/#tokens-variable-abstract>
-/// @requires {variable} tokens.$variant-blend-ratio
-///     <./tokens/#tokens-variable-variant-blend-ratio>
-/// @requires {mixin} new
-/// @requires {function} abstract
-/// @requires {function} runtime
-@mixin presets($accent: tokens.$accent,
+@mixin presets(
+    $accent: tokens.$accent,
     $variant: tokens.$variant,
     $mood: tokens.$mood,
     $error: tokens.$error,
     $warning: tokens.$warning,
-    $success: tokens.$success) {
-    @include api.inject-hsl(accent,
+    $success: tokens.$success
+) {
+    @include api.inject-hsl(
+        accent,
         utils.abstract(hue($accent)),
         utils.abstract(saturation($accent)),
-        utils.abstract(lightness($accent)));
-    @include api.inject-hsl(variant,
+        utils.abstract(lightness($accent))
+    );
+    @include api.inject-hsl(
+        variant,
         utils.abstract(hue($variant)),
         utils.abstract(saturation($variant)),
-        utils.abstract(lightness($variant)));
-    @include api.inject-hsl(mood,
+        utils.abstract(lightness($variant))
+    );
+    @include api.inject-hsl(
+        mood,
         utils.abstract(hue($mood)),
         utils.abstract(saturation($mood)),
-        utils.abstract(lightness($mood)));
+        utils.abstract(lightness($mood))
+    );
     @include api.mood-flag;
-
     @include new(error, $error);
     @include new(warning, $warning);
     @include new(success, $success);
-
-    @include api.inject(primary,
-        api.blend-mood(accent, h),
-        api.blend-mood(accent, s),
-        api.blend-mood(accent, l));
-
-    @include api.inject(secondary,
+    @include api.inject(primary, api.blend-mood(accent, h), api.blend-mood(accent, s), api.blend-mood(accent, l));
+    @include api.inject(
+        secondary,
         api.blend-mood(variant, h, tokens.$variant-blend-ratio),
         api.runtime(variant, s),
-        api.blend-mood(variant, l, tokens.$variant-blend-ratio));
-
-    @include api.inject(surface,
-        api.runtime(primary, h),
-        10,
-        api.runtime(primary, l));
+        api.blend-mood(variant, l, tokens.$variant-blend-ratio)
+    );
+    @include api.inject(surface, api.runtime(primary, h), 10, api.runtime(primary, l));
 }
