@@ -1,12 +1,12 @@
 {
     "name": "@dwijbavisi/mood-swings",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "🎨 Color scheme that adapts to your mood",
     "main": "_index.scss",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "demo": "bash spec/scripts/demo.sh",
-        "build-demo": "bash spec/scripts/build-demo.sh",
+        "demo": "npx sass --watch --no-source-map --load-path=. --load-path=./node_modules spec/demo/index.scss:spec/demo/index.css",
+        "build-demo": "npx sass --no-source-map --load-path=. --load-path=./node_modules spec/demo/index.scss:spec/demo/index.css",
         "build-doc": "bash spec/scripts/build-doc.sh",
         "doc-src": "bash spec/scripts/doc-src.sh",
         "doc-api": "bash spec/scripts/doc-api.sh",
@@ -24,6 +24,7 @@
     },
     "homepage": "https://github.com/TaciturnCoder/mood-swings#readme",
     "dependencies": {
+        "@dwijbavisi/dynamics": "^0.1.0",
         "sass": "^1.58.3"
     },
     "devDependencies": {
