@@ -1,3 +1,5 @@
+@use '@dwijbavisi/dynamics/tokens/mood-swings' as dynamics-tokens;
+
 ////
 /// @access public
 /// @group tokens
@@ -10,7 +12,7 @@
 ///         $prefix: 'mood-swings'
 ///     );
 /// @type string
-$prefix: null !default;
+$prefix: dynamics-tokens.$prefix !default;
 
 /// Accent color for the color scheme.
 /// @example scss
@@ -18,7 +20,7 @@ $prefix: null !default;
 ///         $accent: blue
 ///     );
 /// @type Color
-$accent: hsl(280deg 60% 30%) !default;
+$accent: dynamics-tokens.$accent !default;
 
 /// Variant color for the color scheme.
 /// @example scss
@@ -26,7 +28,7 @@ $accent: hsl(280deg 60% 30%) !default;
 ///         $variant: seagreen
 ///     );
 /// @type Color
-$variant: hsl(150deg 60% 30%) !default;
+$variant: dynamics-tokens.$variant !default;
 
 /// Mood color for the color scheme. \
 /// When black, it does not blend with other colors.
@@ -35,7 +37,7 @@ $variant: hsl(150deg 60% 30%) !default;
 ///         $mood: #451476
 ///     );
 /// @type Color
-$mood: black !default;
+$mood: dynamics-tokens.$mood !default;
 
 /// Error color for the color scheme.
 /// @example scss
@@ -43,7 +45,7 @@ $mood: black !default;
 ///         $error: red
 ///     );
 /// @type Color
-$error: hsl(357deg 72% 42%) !default;
+$error: dynamics-tokens.$error !default;
 
 /// Warning color for the color scheme.
 /// @example scss
@@ -51,7 +53,7 @@ $error: hsl(357deg 72% 42%) !default;
 ///         $warning: orange
 ///     );
 /// @type Color
-$warning: hsl(48deg 72% 42%) !default;
+$warning: dynamics-tokens.$warning !default;
 
 /// Success color for the color scheme.
 /// @example scss
@@ -59,7 +61,7 @@ $warning: hsl(48deg 72% 42%) !default;
 ///         $success: lightgreen
 ///     );
 /// @type Color
-$success: hsl(150deg 72% 42%) !default;
+$success: dynamics-tokens.$success !default;
 
 /// Background to text lightness contrast. \
 /// Should be between 0 to 50.
@@ -68,7 +70,7 @@ $success: hsl(150deg 72% 42%) !default;
 ///         $on-shift: 40
 ///     );
 /// @type number
-$on-shift: 50 !default;
+$on-shift: dynamics-tokens.$on-shift !default;
 
 /// Background to container lightness contrast. \
 /// Should be between 0 to 50.
@@ -77,7 +79,7 @@ $on-shift: 50 !default;
 ///         $container-shift: 20
 ///     );
 /// @type number
-$container-shift: 30 !default;
+$container-shift: dynamics-tokens.$container-shift !default;
 
 /// Default color to mood blend ratio. \
 /// Used to generate primary color.
@@ -86,7 +88,7 @@ $container-shift: 30 !default;
 ///         $blend-ratio: 0.2
 ///     );
 /// @type number
-$blend-ratio: 0.1 !default;
+$blend-ratio: dynamics-tokens.$blend-ratio !default;
 
 /// Variant to mood blend ratio. \
 /// Used to generate secondary color.
@@ -95,4 +97,4 @@ $blend-ratio: 0.1 !default;
 ///         $variant-blend-ratio: 0.4
 ///     );
 /// @type number
-$variant-blend-ratio: 0.6 !default;
+$variant-blend-ratio: dynamics-tokens.$variant-blend-ratio !default;

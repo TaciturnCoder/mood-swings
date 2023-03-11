@@ -1,0 +1,16 @@
+.vscode/**/*
+
+docs/
+
+spec/coverage/**/*
+spec/demo/**/*
+spec/scripts/**/*
+**/*.spec.js
+
+.stylelintrc.json
+.eslintrc.cjs
+jest.config.mjs
+jsdoc.config.json
+
+node_modules/
+package-lock.json

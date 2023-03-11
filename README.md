@@ -1,4 +1,4 @@
-# mood-swings [0.5.0]
+# mood-swings [0.6.0]
 🎨 Color scheme that adapts to your mood
 
 # Installation
